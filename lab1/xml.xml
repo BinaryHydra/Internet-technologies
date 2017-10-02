@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tvarkaraštis xmlns="https://mif.vu.lt/" xmlns:vu="http://www.vilnius.lt/"    >
+    <Paskaitos>
+        <paskaita pavadinimas="Interneto technologijos">
+            <teorija>
+                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101">
+            </teorija>
+            <pratybos>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="318">
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-15</deadline>
+                        <temos>
+                            <tema pavadinimas="XML"/>
+                            <tema pavadinimas="JSON"/>
+                            <tema pavadinimas="XPATH"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>2</numeris>
+                        <deadline>2017-11-12</deadline>
+                        <temos>
+                            <tema pavadinimas="XML schema"/>
+                            <tema pavadinimas="JSON schema"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>3</numeris>
+                        <deadline>2017-12-03</deadline>
+                        <temos>
+                            <tema pavadinimas="HTML"/>
+                            <tema pavadinimas="CSS"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>4</numeris>
+                        <deadline>2017-12-22</deadline>
+                        <temos>
+                            <tema pavadinimas="JavaScript"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </pratybos>
+        </paskaita>
+        <paskaita pavadinimas="Programų sistemų projektavimas">
+        </paskaita>
+            <paskaita pavadinimas="Programų sistemų projektavimas">
+            <teorija>
+                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101">
+            </teorija>
+            <pratybos>
+                <vu
+            </pratybos
+        </paskaita>  
+    </Paskaitos>
+</tvarkaraštis>
