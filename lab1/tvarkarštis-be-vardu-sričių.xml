@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tvarkaraštis>
+    <paskaitos>
+        <paskaita pavadinimas="Interneto technologijos">
+            <teorija>
+                <paskaitosVieta gatvė="Naugarduko" auditorija="101"/>
+            </teorija>
+            <pratybos>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="318"/>
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-15</deadline>
+                        <temos>
+                            <tema pavadinimas="XML"/>
+                            <tema pavadinimas="JSON"/>
+                            <tema pavadinimas="XPATH"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>2</numeris>
+                        <deadline>2017-11-12</deadline>
+                        <temos>
+                            <tema pavadinimas="XML schema"/>
+                            <tema pavadinimas="JSON schema"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>3</numeris>
+                        <deadline>2017-12-03</deadline>
+                        <temos>
+                            <tema pavadinimas="HTML"/>
+                            <tema pavadinimas="CSS"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>4</numeris>
+                        <deadline>2017-12-22</deadline>
+                        <temos>
+                            <tema pavadinimas="JavaScript"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </pratybos>
+        </paskaita>
+        <paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
+            <teorija>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+            </teorija>
+            <pratybos>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="319"/>
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-13</deadline>
+                        <temos>
+                            <tema pavadinimas="Naudotojų poreikiai ir užduočių analizė"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>2</numeris>
+                        <deadline>2017-11-12</deadline>
+                        <temos>
+                            <tema pavadinimas="Alternatyvieji interfeisų maketai"/>
+                            <tema pavadinimas="Maketų euristinis tikrinimas"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>3</numeris>
+                        <deadline>2017-12-09</deadline>
+                        <temos>
+                            <tema pavadinimas="Detalusis prototipas"/>
+                            <tema pavadinimas="Detaliojo prototipo testavimas"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </pratybos>
+        </paskaita>
+        <paskaita pavadinimas="Programų sistemų projektavimas">
+            <teorija>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+            </teorija>
+            <pratybos>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="303"/>
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-13</deadline>
+                        <temos>
+                            <tema pavadinimas="Template method"/>
+                            <tema pavadinimas="Strategy"/>
+                            <tema pavadinimas="Composition"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </pratybos>
+        </paskaita>
+    </paskaitos>
+</tvarkaraštis>
