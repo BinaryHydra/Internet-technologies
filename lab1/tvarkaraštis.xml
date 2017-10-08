@@ -3,10 +3,10 @@
     <vu:paskaitos>
         <vu:paskaita pavadinimas="Interneto technologijos">
             <vu:teorija>
-                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101"/>
+                <vu:paskaitosVieta gatvė="Naugarduko" auditorija="101"/>
             </vu:teorija>
             <vu:pratybos>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="318"/>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="318"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -49,10 +49,10 @@
         </vu:paskaita>
         <vu:paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
             <vu:teorija>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="103"/>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
             </vu:teorija>
             <vu:pratybos>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="319"/>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="319"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -85,10 +85,10 @@
         </vu:paskaita>
         <vu:paskaita pavadinimas="Programų sistemų projektavimas">
             <vu:teorija>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="103"/>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
             </vu:teorija>
             <vu:pratybos>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="303"/>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="303"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>

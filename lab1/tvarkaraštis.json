@@ -1,0 +1,52 @@
+{
+  "tvarkaraštis": {
+    "paskaitos": [{
+      "pavadinimas": "Interneto technologijos",
+      "teorija": {
+        "paskaitosVieta": {
+          "gatvė": "Naugarduko",
+          "autitorija": "101"
+        }
+      },
+      "pratybos": {
+        "paskaitosVieta": {
+          "gatvė": "Naugarduko",
+          "autitorija": "101"
+        },
+        "užduotys": [{
+          "numeris": 1,
+          "deadline": "2017-10-15",
+          "temos": {
+            "pavadinimas": "XML",
+            "pavadinimas": "JSON",
+            "pavadinimas": "XPATH"
+          },
+          "įvertis": "1.0"
+        }, {
+          "numeris": 2,
+          "deadline": "2017-11-12",
+          "temos": {
+            "pavadinimas": "XML schema",
+            "pavadinimas": "JSON schema"
+          },
+          "įvertis": "1.0"
+        }, {
+          "numeris": 3,
+          "deadline": "2017-12-03",
+          "temos": {
+            "pavadinimas": "HTML",
+            "pavadinimas": "CSS"
+          },
+          "įvertis": "1.0"
+        }, {
+          "numeris": 4,
+          "deadline": "2017-12-22",
+          "temos": {
+            "pavadinimas": "JavaScript"
+          },
+          "įvertis": "1.0"
+        }]
+      }
+    }]
+  }
+}
