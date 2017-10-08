@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tvarkaraštis xmlns="https://mif.vu.lt/" xmlns:vu="http://www.vilnius.lt/"    >
-    <Paskaitos>
-        <paskaita pavadinimas="Interneto technologijos">
-            <teorija>
-                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101">
-            </teorija>
-            <pratybos>
-                <vu:paskaitosVieta gatve="Didlaukio" auditorija="318">
+<vu:tvarkaraštis xmlns="https://mif.vu.lt/lt3/" xmlns:vu="https://mif.vu.lt/timetable/mif/">
+    <vu:paskaitos>
+        <vu:paskaita pavadinimas="Interneto technologijos">
+            <vu:teorija>
+                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="318"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -45,17 +45,63 @@
                         <ivertis>1.0</ivertis>
                     </užduotis>
                 </užduotys>
-            </pratybos>
-        </paskaita>
-        <paskaita pavadinimas="Programų sistemų projektavimas">
-        </paskaita>
-            <paskaita pavadinimas="Programų sistemų projektavimas">
-            <teorija>
-                <vu:paskaitosVieta gatve="Naugarduko" auditorija="101">
-            </teorija>
-            <pratybos>
-                <vu
-            </pratybos
-        </paskaita>  
-    </Paskaitos>
-</tvarkaraštis>
+            </vu:pratybos>
+        </vu:paskaita>
+        <vu:paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
+            <vu:teorija>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="103"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="319"/>
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-13</deadline>
+                        <temos>
+                            <tema pavadinimas="Naudotojų poreikiai ir užduočių analizė"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>2</numeris>
+                        <deadline>2017-11-12</deadline>
+                        <temos>
+                            <tema pavadinimas="Alternatyvieji interfeisų maketai"/>
+                            <tema pavadinimas="Maketų euristinis tikrinimas"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                    <užduotis>
+                        <numeris>3</numeris>
+                        <deadline>2017-12-09</deadline>
+                        <temos>
+                            <tema pavadinimas="Detalusis prototipas"/>
+                            <tema pavadinimas="Detaliojo prototipo testavimas"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </vu:pratybos>
+        </vu:paskaita>
+        <vu:paskaita pavadinimas="Programų sistemų projektavimas">
+            <vu:teorija>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="103"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatve="Didlaukio" auditorija="303"/>
+                <užduotys>
+                    <užduotis>
+                        <numeris>1</numeris>
+                        <deadline>2017-10-13</deadline>
+                        <temos>
+                            <tema pavadinimas="Template method"/>
+                            <tema pavadinimas="Strategy"/>
+                            <tema pavadinimas="Composition"/>
+                        </temos>
+                        <ivertis>1.0</ivertis>
+                    </užduotis>
+                </užduotys>
+            </vu:pratybos>
+        </vu:paskaita>
+    </vu:paskaitos>
+</vu:tvarkaraštis>
