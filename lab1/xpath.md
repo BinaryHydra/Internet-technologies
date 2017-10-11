@@ -60,13 +60,14 @@ Parašyti XPath kelią su predikatu, kurio viduje yra panaudotas XPath kelias (p
 //paskaita[teorija/paskaitosVieta/@gatvė=//paskaita[@pavadinimas="Programų sistemų projektavimas"]/teorija/paskaitosVieta/@gatvė]/@*
 ```
 ### Užduotis 3.
-Funkcijas count() ir sum() (pvz., suskaičiuoti, kiek yra tam tikrų žymių/atributų, susumuoti tam tikrų žymių turinį), gebėti paaiškinti, ką ir kodėl grąžina išraiška sum(//*)šiam XML dokumentui:
+Funkcijas count() ir sum() (pvz., suskaičiuoti, kiek yra tam tikrų žymių/atributų, susumuoti tam tikrų žymių turinį), gebėti paaiškinti, ką ir kodėl grąžina išraiška sum(//\*)šiam XML dokumentui:
  `<a\><b>2</b><c>3</c></a>` (dėstytojas pakeis XML dokumentą)
 ```
 sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
 ```
 
 ### Užduotis 4
+Operacijas <, =, + su skirtingų tipų operandais, ir paaiškinti, kaip apliekamas automatinis tipų konvertavimas (pvz. mokėti paaiškinti, kaip apskaičiuojamas išraiškos 5 < "kuku" rezultatas).
 ```
 //numeris <2
 ```
@@ -77,10 +78,17 @@ sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)count(//paskaita
 //not(boolean(//knygos)) + //užduotis[2]/numeris
 ```
 ### Užduotis 5.
+Reikia parašyti trijų žingsnių XPath išraišką (turi būti naudojamas bent vienas predikatas ir dvi skirtingos ašys) ir į atsiskaitymą atsinešti nupieštas aibes, kurios sukuriamos kiekvieno žingsnio apdorojimo rezultate
 ```
 //tema[./@pavadinimas="XML schema"]/preceding::*[1]/text()
 ```
 ### Užduotis 6.
+parašyti išraišką, su operatoriumi = arba != lyginančią:
+1. aibę ir skaičių,
+2. aibę ir eilutę,
+3. aibę ir loginę reikšmę,
+4. dvi aibes
+
 aibė ir skaičius
 ```
 //numeris = 4
@@ -98,6 +106,7 @@ dvi aibes
 //* = //paskaitosVieta
 ```
 ### Užduotis 7.
+parašyti išraišką, su operatoriais <, > lyginančią dvi aibes ir mokėti paaiškinti atliekamus automatinius tipų konvertavimus
 ```
 //ivertis < //numeris
 ```
