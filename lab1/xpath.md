@@ -1,8 +1,7 @@
 # XPATH
 
-
-
-  **1.** Pasirinkti savo XML dokumente vieną žymę (turinčią bent vieną protėvį, ir bent vieną anūką), parašyti XPath kelią, unikaliai nueinantį prie tos žymės, ir prie to kelio prirašyti dar vieną žingsnį, naudojant šias ašis: ancestor, descendant, following-sibling, preceding-sibling, following, preceding, attribute (po vieną pavyzdį kiekvienai ašiai), mokėti paaiškinti rezultatą
+### Užduotis 1.
+Pasirinkti savo XML dokumente vieną žymę (turinčią bent vieną protėvį, ir bent vieną anūką), parašyti XPath kelią, unikaliai nueinantį prie tos žymės, ir prie to kelio prirašyti dar vieną žingsnį, naudojant šias ašis: ancestor, descendant, following-sibling, preceding-sibling, following, preceding, attribute (po vieną pavyzdį kiekvienai ašiai), mokėti paaiškinti rezultatą
 
 ##### Pasirinkta žymė - sekanti IT užduotis:
 ```
@@ -55,17 +54,17 @@ attribute::
 (//užduotis)[2]/preceding::*/attribute::*
 ```
 
-**2.**  
+### Užduotis 2.
 Parašyti XPath kelią su predikatu, kurio viduje yra panaudotas XPath kelias (pvz.: rasti visas žymes A, kurių atributas x turi tokią pačią reikšmę kaip penktos dokumente žymės B atributas y; čia A, B, x, y pakeiskite į savo dokumento žymes/atributus), paaiškinti predikato veikimo principą
 ```
 //paskaita[teorija/paskaitosVieta/@gatvė=//paskaita[@pavadinimas="Programų sistemų projektavimas"]/teorija/paskaitosVieta/@gatvė]/@*
 ```
-3.  
+### Užduotis 3.
 ```
 sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
 ```
 
-4.
+### Užduotis 4
 ```
 //numeris <2
 ```
@@ -75,11 +74,11 @@ sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)count(//paskaita
 ```
 //not(boolean(//knygos)) + //užduotis[2]/numeris
 ```
-5.
+### Užduotis 5.
 ```
 //tema[./@pavadinimas="XML schema"]/preceding::*[1]/text()
 ```
-6.
+### Užduotis 6.
 aibė ir skaičius
 ```
 //numeris = 4
@@ -96,7 +95,7 @@ dvi aibes
 ```
 //* = //paskaitosVieta
 ```
-7.
+### Užduotis 7.
 ```
 //ivertis < //numeris
 ```
