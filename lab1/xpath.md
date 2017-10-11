@@ -79,9 +79,14 @@ Operacijas <, =, + su skirtingų tipų operandais, ir paaiškinti, kaip apliekam
 ```
 ### Užduotis 5.
 Reikia parašyti trijų žingsnių XPath išraišką (turi būti naudojamas bent vienas predikatas ir dvi skirtingos ašys) ir į atsiskaitymą atsinešti nupieštas aibes, kurios sukuriamos kiekvieno žingsnio apdorojimo rezultate
+
+
+##### Xpath išraiška:
 ```
 //tema[./@pavadinimas="XML schema"]/preceding::*[1]/text()
 ```
+//
+
 ### Užduotis 6.
 parašyti išraišką, su operatoriumi = arba != lyginančią:
 1. aibę ir skaičių,
