@@ -1,10 +1,12 @@
-1.
-Gražina sekančia IT užduotį
+
+##1. Pasirinkti savo XML dokumente vieną žymę (turinčią bent vieną protėvį, ir bent vieną anūką), parašyti XPath kelią, unikaliai nueinantį prie tos žymės, ir prie to kelio prirašyti dar vieną žingsnį, naudojant šias ašis: ancestor, descendant, following-sibling, preceding-sibling, following, preceding, attribute (po vieną pavyzdį kiekvienai ašiai), mokėti paaiškinti rezultatą
+
+####Pasirinkta žymė - sekanti IT užduotis:
 ```
 //užduotis[numeris/text() = 2][../../../@pavadinimas = "Interneto technologijos"]
 
 ```
-arba trumpiau
+arba trumpiau:
 ```
 (//užduotis)[2]
 ```
