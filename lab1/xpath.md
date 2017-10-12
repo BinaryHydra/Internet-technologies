@@ -19,22 +19,24 @@ ancestor::
 (//užduotis)[2]/ancestor::*
 ```
 
-
 descendant::
+*grąžina palikuonius*
 ```
 (//užduotis)[2]/descendant::*
 ```
 
+*grąžina sekančius tuos pačius elementus*
 following-sibling::
 ```
 (//užduotis)[2]/following-sibling::*
 ```
 
+*grąžina buvusius tuos pačius elementus*
 preceding-sibling::
 ```
 (//užduotis)[2]/preceding-sibling::*
 ```
-
+*grąžina sekančius elemetus*
 following::
 ```
 (//užduotis)[2]/following::*
@@ -65,7 +67,7 @@ Funkcijas count() ir sum() (pvz., suskaičiuoti, kiek yra tam tikrų žymių/atr
 sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)
 ```
 ```
-count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
+count(//paskaita[@pavadinimas="Interneto technologijos"]/užduotys/užduotis[numeris=1]/temos/tema)
 ```
 
 ### Užduotis 4
