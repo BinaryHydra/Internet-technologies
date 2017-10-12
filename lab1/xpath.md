@@ -6,7 +6,6 @@ Pasirinkti savo XML dokumente vieną žymę (turinčią bent vieną protėvį, i
 ##### Pasirinkta žymė - sekanti IT užduotis:
 ```
 //užduotis[numeris/text() = 2][../../../@pavadinimas = "Interneto technologijos"]
-
 ```
 arba trumpiau:
 ```
@@ -63,16 +62,17 @@ Parašyti XPath kelią su predikatu, kurio viduje yra panaudotas XPath kelias (p
 Funkcijas count() ir sum() (pvz., suskaičiuoti, kiek yra tam tikrų žymių/atributų, susumuoti tam tikrų žymių turinį), gebėti paaiškinti, ką ir kodėl grąžina išraiška sum(//\*)šiam XML dokumentui:
  `<a\><b>2</b><c>3</c></a>` (dėstytojas pakeis XML dokumentą)
 ```
-sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
+sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)
+count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
 ```
 
 ### Užduotis 4
 Operacijas <, =, + su skirtingų tipų operandais, ir paaiškinti, kaip apliekamas automatinis tipų konvertavimas (pvz. mokėti paaiškinti, kaip apskaičiuojamas išraiškos 5 < "kuku" rezultatas).
 ```
-//numeris <2
+//numeris < 2
 ```
 ```
-//paskaitosVieta/@auditorija = "303
+//paskaitosVieta/@auditorija = "303"
 ```
 ```
 //not(boolean(//knygos)) + //užduotis[2]/numeris
