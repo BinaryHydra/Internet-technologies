@@ -1,5 +1,5 @@
 ## Aibės gautos vykdant išraiškos žingsius
-###Ištraiška:
+### Ištraiška:
 ```
 //tema[./@pavadinimas="XML schema"]/preceding::*[1]/text()
 ```
