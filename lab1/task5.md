@@ -70,7 +70,7 @@
 \<teorija/>  
 \<paskaitosVieta/>  
 \<pratybos/>  
-\<paskaitosVieta/>  
+\<paskaito  sVieta/>  
 \<užduotys/>  
 \<užduotis/>  
 \<numeris/>  
@@ -98,9 +98,28 @@
 \<tema pavadinimas="Strategy"/>  
 \<tema pavadinimas="Composition"/>  
 
-### 3.//tema[./@pavadinimas="XML schema"]
+### 3. //tema[./@pavadinimas="XML schema"]
 \<tema pavadinimas="XML schema"/>
 
-### 4.//tema[./@pavadinimas="XML&nbsp;schema"]/preceding::*
+### 4. //tema[./@pavadinimas="XML&nbsp;schema"]/preceding::*
 
-//TODO
+\<deadline>2017-11-12\</deadline>  
+\<numeris>2\</numeris>  
+\<ivertis>1.0\</ivertis>  
+\<tema pavadinimas="XPATH"/>  
+\<tema pavadinimas="JSON"/>  
+\<tema pavadinimas="XML"/>  
+\<deadline>2017-10-15\</deadline>  
+\<numeris>1\</numeris>  
+\<paskaitosVieta gatvė="Didlaukio" auditorija="318"/>  
+\<paskaitosVieta gatvė="Naugarduko" auditorija="101"/>  
+\<teorija/>  
+
+### 5. //tema[./@pavadinimas="XML schema"]/preceding::\*[1]
+
+\<deadline>2017-11-12\</deadline>  
+
+
+### 6.//tema[./@pavadinimas="XML schema"]/preceding::\*[1]/text()
+
+2017-11-12
