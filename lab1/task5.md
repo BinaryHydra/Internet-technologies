@@ -87,8 +87,8 @@
 \<tema pavadinimas="XPATH"/>  
 \<tema pavadinimas="XML schema"/>  
 \<tema pavadinimas="JSON schema"/>  
-\<tema pavadinimas="HTML"/>
-\<tema pavadinimas="CSS"/>
+\<tema pavadinimas="HTML"/>  
+\<tema pavadinimas="CSS"/>  
 \<tema pavadinimas="Naudotojų poreikiai ir užduočių analizė"/>  
 \<tema pavadinimas="Alternatyvieji interfeisų maketai"/>  
 \<tema pavadinimas="Maketų euristinis tikrinimas"/>  
