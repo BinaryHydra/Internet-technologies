@@ -63,6 +63,8 @@ Funkcijas count() ir sum() (pvz., suskaičiuoti, kiek yra tam tikrų žymių/atr
  `<a\><b>2</b><c>3</c></a>` (dėstytojas pakeis XML dokumentą)
 ```
 sum(//paskaita[@pavadinimas="Interneto technologijos"]//ivertis)
+```
+```
 count(//paskaita[@pavadinimas="Interneto technologijos"]//užduotys/užduotis[numeris1]/temos/tema)
 ```
 
