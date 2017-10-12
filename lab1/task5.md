@@ -81,7 +81,7 @@
 \<tema/>  
 \<ivertis/>  
 
-###2. //tema
+### 2. //tema
 \<tema pavadinimas="XML"/>  
 \<tema pavadinimas="JSON"/>  
 \<tema pavadinimas="XPATH"/>  
@@ -98,9 +98,9 @@
 \<tema pavadinimas="Strategy"/>  
 \<tema pavadinimas="Composition"/>  
 
-###3.//tema[./@pavadinimas="XML schema"]
+### 3.//tema[./@pavadinimas="XML schema"]
 \<tema pavadinimas="XML schema"/>
 
-###4.//tema[./@pavadinimas="XML&nbsp;schema"]/preceding::*
+### 4.//tema[./@pavadinimas="XML&nbsp;schema"]/preceding::*
 
 //TODO
