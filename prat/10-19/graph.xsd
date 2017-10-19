@@ -3,7 +3,12 @@
     <xs:element name="graph">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="nodes" type="nodesType"/>
+                <xs:element name="nodes" type="nodesType">
+                  <xs:unique name="uniqueNodeName">
+                    <xs:selector xpath="node"/>
+                    <xs:field xpath="@name"/>
+                  </xs:unique>
+                </xs:element>
                 <xs:element name="vertices" type="verticesType" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
@@ -29,10 +34,9 @@
             <xs:element name="weight" type="nonNegInt"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:simpleType name=nonNegInt>
+    <xs:simpleType name="nonNegInt">
         <xs:restriction base="xs:integer">
-          <xs:minInclusive value=0>
+            <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
-
 </xs:schema>
