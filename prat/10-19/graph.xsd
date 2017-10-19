@@ -4,7 +4,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="nodes" type="nodesType"/>
-                <xs:element name="vertices" type="verticesType"/>
+                <xs:element name="vertices" type="verticesType" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -26,7 +26,13 @@
         <xs:sequence >
             <xs:element name="from" type="xs:string"/>
             <xs:element name="to" type="xs:string"/>
-            <xs:element name="weight" type="xs:integer"/>
+            <xs:element name="weight" type="nonNegInt"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:simpleType name=nonNegInt>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value=0>
+        </xs:restriction>
+    </xs:simpleType>
+
 </xs:schema>
