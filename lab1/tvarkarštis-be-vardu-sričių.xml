@@ -16,7 +16,7 @@
                             <tema pavadinimas="JSON"/>
                             <tema pavadinimas="XPATH"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
                         <numeris>2</numeris>
@@ -25,7 +25,7 @@
                             <tema pavadinimas="XML schema"/>
                             <tema pavadinimas="JSON schema"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
                         <numeris>3</numeris>
@@ -34,7 +34,7 @@
                             <tema pavadinimas="HTML"/>
                             <tema pavadinimas="CSS"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
                         <numeris>4</numeris>
@@ -42,7 +42,7 @@
                         <temos>
                             <tema pavadinimas="JavaScript"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
             </pratybos>
@@ -60,7 +60,7 @@
                         <temos>
                             <tema pavadinimas="Naudotojų poreikiai ir užduočių analizė"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
                         <numeris>2</numeris>
@@ -69,7 +69,7 @@
                             <tema pavadinimas="Alternatyvieji interfeisų maketai"/>
                             <tema pavadinimas="Maketų euristinis tikrinimas"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
                         <numeris>3</numeris>
@@ -78,7 +78,7 @@
                             <tema pavadinimas="Detalusis prototipas"/>
                             <tema pavadinimas="Detaliojo prototipo testavimas"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
             </pratybos>
@@ -98,7 +98,7 @@
                             <tema pavadinimas="Strategy"/>
                             <tema pavadinimas="Composition"/>
                         </temos>
-                        <ivertis>1.0</ivertis>
+                        <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
             </pratybos>
