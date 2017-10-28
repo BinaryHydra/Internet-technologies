@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="tvarkaraštis">
+        <xs:complexType>
+        <xs:sequence>
+            <xs:element name="paskaitos" type="paskaitosType"/>
+        </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="paskaitosType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="paskaita" type="paskaitaType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="paskaitaType">
+        <xs:sequence>
+            <xs:element name="teorija" type="teorijaType"/>
+            <xs:element name="pratybos" type="pratybosType"/>
+        </xs:sequence>
+        <xs:attribute name="pavadinimas" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="teorijaType">
+         <xs:sequence>
+            <xs:element name="paskaitosVieta" type="paskaitosVietaType"/>
+         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="paskaitosVietaType">
+        <xs:attribute name="gatvė" type="gatvėType"/>
+        <xs:attribute name="auditorija" type="xs:integer"/>
+    </xs:complexType>
+    <xs:simpleType name="gatvėType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Naugarduko"/>
+            <xs:enumeration value="Didlaukio"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="pratybosType">
+        <xs:complexContent>
+            <xs:extension base="teorijaType">
+                <xs:sequence>
+                    <xs:element name="užduotys" type="užduotysType">
+                </xs:sequence>
+           </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="užduotysType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="užduotis" type="užduotisType">
+        </xs:sequence>
+    </xs:complexContent>
+</xs:schema>
