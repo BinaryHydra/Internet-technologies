@@ -26,7 +26,7 @@
     </xs:complexType>
     <xs:complexType name="paskaitosVietaType">
         <xs:attribute name="gatvė" type="gatvėType"/>
-        <xs:attribute name="auditorija" type="xs:integer"/>
+        <xs:attribute name="auditorija" type="auditorijaType"/>
     </xs:complexType>
     <xs:simpleType name="gatvėType">
         <xs:restriction base="xs:string">
@@ -38,14 +38,35 @@
         <xs:complexContent>
             <xs:extension base="teorijaType">
                 <xs:sequence>
-                    <xs:element name="užduotys" type="užduotysType">
+                    <xs:element name="užduotys" type="užduotysType"/>
                 </xs:sequence>
            </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="užduotysType">
         <xs:sequence minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="užduotis" type="užduotisType">
+            <xs:element name="užduotis" type="užduotisType"/>
         </xs:sequence>
-    </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="užduotisType">
+        <xs:sequence>
+            <xs:element name="numeris" type="xs:integer"/>
+            <xs:element name="deadline" type="xs:date"/>
+            <xs:element name="temos" type="temosType"/>
+            <xs:element name="įvertis" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="temosType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="tema" type="temaType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="temaType">
+        <xs:attribute name="pavadinimas" type="xs:string"/>
+     </xs:complexType>
+    <xs:simpleType name="auditorijaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+[a-zA-Z]?"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
