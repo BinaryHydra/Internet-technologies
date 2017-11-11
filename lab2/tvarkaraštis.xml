@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tvarkaraštis>
-    <paskaitos>
-        <paskaita pavadinimas="Interneto technologijos">
-            <teorija>
-                <paskaitosVieta gatvė="Naugarduko" auditorija="101"/>
-            </teorija>
-            <pratybos>
-                <paskaitosVieta gatvė="Didlaukio" auditorija="318"/>
+<vu:tvarkaraštis xmlns="https://mif.vu.lt/lt3/" xmlns:vu="https://mif.vu.lt/timetable/mif/">
+    <vu:paskaitos>
+        <vu:paskaita pavadinimas="Interneto technologijos">
+            <vu:teorija>
+                <vu:paskaitosVieta gatvė="Naugarduko" auditorija="101"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="318"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -45,14 +45,14 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
-            </pratybos>
-        </paskaita>
-        <paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
-            <teorija>
-                <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
-            </teorija>
-            <pratybos>
-                <paskaitosVieta gatvė="Didlaukio" auditorija="319"/>
+            </vu:pratybos>
+        </vu:paskaita>
+        <vu:paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
+            <vu:teorija>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="319"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -72,7 +72,7 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
-                        <numeris tesinys="true" tesinysNr="2">3</numeris>
+                        <numeris>3</numeris>
                         <deadline>2017-12-09</deadline>
                         <temos>
                             <tema pavadinimas="Detalusis prototipas"/>
@@ -81,18 +81,18 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
-            </pratybos>
-        </paskaita>
-        <paskaita pavadinimas="Programų sistemų projektavimas">
-            <teorija>
-                <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
-            </teorija>
-            <pratybos>
-                <paskaitosVieta gatvė="Didlaukio" auditorija="303"/>
+            </vu:pratybos>
+        </vu:paskaita>
+        <vu:paskaita pavadinimas="Programų sistemų projektavimas">
+            <vu:teorija>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+            </vu:teorija>
+            <vu:pratybos>
+                <vu:paskaitosVieta gatvė="Didlaukio" auditorija="303"/>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
-                        <deadlineString>asdsagdsa<data>2017-10-13</data>asdasd</deadlineString>
+                        <deadline>2017-10-13</deadline>
                         <temos>
                             <tema pavadinimas="Template method"/>
                             <tema pavadinimas="Strategy"/>
@@ -101,7 +101,7 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                 </užduotys>
-            </pratybos>
-        </paskaita>
-    </paskaitos>
-</tvarkaraštis>
+            </vu:pratybos>
+        </vu:paskaita>
+    </vu:paskaitos>
+</vu:tvarkaraštis>
