@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://mif.vu.lt/lt3/"
+           targetNamespace="https://mif.vu.lt/lt3/" xmlns:p="https://mif.vu.lt/lt3/"
+           elementFormDefault="qualified">
+    <xs:element name="tvarkaraštis">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paskaitos" type="paskaitosType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="paskaitosType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="paskaita" type="paskaitaType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="paskaitaType">
+        <xs:sequence>
+            <xs:element name="teorija" type="teorijaType"/>
+            <xs:element name="pratybos" type="pratybosType"/>
+        </xs:sequence>
+        <xs:attribute name="pavadinimas" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="genericPaskaitaType">
+        <xs:sequence>
+            <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="paskaitosVietaType">
+        <xs:attribute name="gatvė" type="gatvėType"/>
+        <xs:attribute name="auditorija" type="auditorijaType"/>
+    </xs:complexType>
+
+    <xs:simpleType name="gatvėType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Naugarduko"/>
+            <xs:enumeration value="Didlaukio"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="genericPaskaitaSuVietaType">
+        <xs:complexContent>
+            <xs:restriction base="genericPaskaitaType">
+                <xs:sequence>
+                    <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="1"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="teorijaType">
+        <xs:complexContent>
+            <xs:extension base="genericPaskaitaSuVietaType">
+                <xs:sequence>
+                    <xs:element name="dėstytojas" type="profesoriusType"/>
+                    <xs:element name="pagr.Šaltinis" type="knygaType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="knygaType">
+        <xs:sequence>
+            <xs:element name="pavadinimas" type="xs:string"/>
+            <xs:element name="autoriai" type="autoriaiType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="autoriaiType">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="autorius" type="žmogusType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="pratybosType">
+        <xs:complexContent>
+            <xs:extension base="genericPaskaitaType">
+                <xs:sequence>
+                    <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
+                    <xs:element name="užduotys" type="užduotysType">
+                        <xs:key name="užduotisKey">
+                            <xs:selector xpath="p:užduotis"/>
+                            <!-- <xs:selector xpath="p:užduotis"/>-->
+                            <xs:field xpath="numeris"/>
+                        </xs:key>
+                        <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
+                            <xs:selector xpath="užduotis/numeris"/>
+                            <!-- <xs:selector xpath="p:užduotis/p:numeris"/>-->
+                            <xs:field xpath="@tesinioNr"/>
+                        </xs:keyref>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="užduotysType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="užduotis" type="užduotisType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="užduotisType">
+        <xs:sequence>
+            <xs:element name="numeris" type="numerisSuTesiniuType"/>
+            <xs:choice>
+                <xs:element name="deadlineString" type="deadlineStringType"/>
+                <xs:element name="deadline" type="xs:date"/>
+            </xs:choice>
+            <xs:element name="temos" type="temosType"/>
+            <xs:element name="įvertis" type="įvertisType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="temosType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="tema" type="temaType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="deadlineStringType" mixed="true">
+        <xs:all>
+         <xs:element name="data" type="xs:date"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="temaType">
+        <xs:attribute name="pavadinimas" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:simpleType name="auditorijaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+[a-zA-Z]?"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="įvertisType">
+        <xs:list itemType="xs:decimal"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="žmogusType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([\w]+\.?\s)*([\w]+)"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="žmogusSuLaipsiuType">
+        <xs:simpleContent>
+            <xs:extension base="žmogusType">
+                <xs:attribute name="laipsnis" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+     <xs:complexType name="profesoriusType">
+        <xs:simpleContent>
+            <xs:restriction base="žmogusSuLaipsiuType">
+                <xs:attribute name="laipsnis" type="xs:string" use="required"/>
+            </xs:restriction>
+        </xs:simpleContent>
+     </xs:complexType>
+
+    <xs:simpleType name="numerisType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="numerisSuTesiniuType">
+        <xs:simpleContent>
+            <xs:extension base="numerisType">
+                <xs:attribute name="tesinioNr" type="xs:integer"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
