@@ -98,45 +98,82 @@ išvestas:
 
 bazinis:
 ```xml
- <xs:complexType name="genericPaskaitaType">
-        <xs:sequence>
-            <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
+<xs:complexType name="genericPaskaitaType">
+    <xs:sequence>
+        <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
+    </xs:sequence>
+</xs:complexType>
 ```
 
 išvestas:
 ```xml
-    xs:complexType name="pratybosType">
-        <xs:complexContent>
-            <xs:extension base="genericPaskaitaType">
-                <xs:sequence>
-                    <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
+<xs:complexType name="pratybosType">
+    <xs:complexContent>
+        <xs:extension base="genericPaskaitaType">
+            <xs:sequence>
+                <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
                     <xs:element name="užduotys" type="užduotysType">
-                        <xs:key name="užduotisKey">
-                            <xs:selector xpath="užduotis"/>
-                            <xs:field xpath="numeris"/>
-                        </xs:key>
-                        <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
-                            <xs:selector xpath="užduotis/numeris"/>
-                            <xs:field xpath="@tesinioNr"/>
-                        </xs:keyref>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+                    <xs:key name="užduotisKey">
+                        <xs:selector xpath="užduotis"/>
+                        <xs:field xpath="numeris"/>
+                    </xs:key>
+                     <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
+                        <xs:selector xpath="užduotis/numeris"/>
+                        <xs:field xpath="@tesinioNr"/>
+                    </xs:keyref>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
 ```
 
+## 5.Pademonstruoti apribojimo principą - parodyti pavyzdį, kai apribojimo principas pažeistas, ir žinoti, kaip reikia pataisyti pavyzdį
 
+Validacija vyksta nuo bazinio tipo hierarchiškai einant žemyn
 
-## 5.Pademonstruoti apribojimo principą - parodyti pavyzdį, kai apribojimo principas pažeistas, ir žinoti, kaip reikia pataisyti pavyzdį.
+## 6.Sudėtingas tipas su mišriu turiniu
 
-## 6.Sudėtingas tipas su mišriu turiniu,
+```xml
+<xs:complexType name="deadlineStringType" mixed="true">
+    <xs:all>
+         <xs:element name="data" type="xs:date"/>
+    </xs:all>
+</xs:complexType>
+```
 
-## 7.Choice valdymo struktūra,
+## 7.Choice valdymo struktūra
+
+```xml
+<xs:choice>
+    <xs:element name="deadlineString" type="deadlineStringType"/>
+    <xs:element name="deadline" type="xs:date"/>
+</xs:choice>
+```
 
 ## 8.Bent viena nuoroda (keyref) į unikalumo ribojimą (unique) arba raktą (key)
+
+```xml
+<xs:complexType name="pratybosType">
+    <xs:complexContent>
+        <xs:extension base="genericPaskaitaType">
+            <xs:sequence>
+                <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
+                    <xs:element name="užduotys" type="užduotysType">
+                    <xs:key name="užduotisKey">
+                        <xs:selector xpath="užduotis"/>
+                        <xs:field xpath="numeris"/>
+                    </xs:key>
+                     <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
+                        <xs:selector xpath="užduotis/numeris"/>
+                        <xs:field xpath="@tesinioNr"/>
+                    </xs:keyref>
+                </xs:element>
+            </xs:sequence>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+```
 
 ## 9.Visi jūsų susikurti tipai turi priklausyti jūsų vardų sričiai
 
