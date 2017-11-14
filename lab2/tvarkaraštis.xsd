@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://mif.vu.lt/lt3/"
+           targetNamespace="https://mif.vu.lt/lt3/" xmlns:p="https://mif.vu.lt/lt3/"
+           elementFormDefault="qualified">
     <xs:element name="tvarkaraštis">
         <xs:complexType>
             <xs:sequence>
@@ -83,11 +85,13 @@
                     <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
                     <xs:element name="užduotys" type="užduotysType">
                         <xs:key name="užduotisKey">
-                            <xs:selector xpath="užduotis"/>
+                            <xs:selector xpath="p:užduotis"/>
+                            <!-- <xs:selector xpath="p:užduotis"/>-->
                             <xs:field xpath="numeris"/>
                         </xs:key>
                         <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
                             <xs:selector xpath="užduotis/numeris"/>
+                            <!-- <xs:selector xpath="p:užduotis/p:numeris"/>-->
                             <xs:field xpath="@tesinioNr"/>
                         </xs:keyref>
                     </xs:element>
@@ -104,7 +108,7 @@
 
     <xs:complexType name="užduotisType">
         <xs:sequence>
-            <xs:element name="numeris" type="numerisType"/>
+            <xs:element name="numeris" type="numerisSuTesiniuType"/>
             <xs:choice>
                 <xs:element name="deadlineString" type="deadlineStringType"/>
                 <xs:element name="deadline" type="xs:date"/>
@@ -167,4 +171,12 @@
             <xs:minInclusive value="1"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:complexType name="numerisSuTesiniuType">
+        <xs:simpleContent>
+            <xs:extension base="numerisType">
+                <xs:attribute name="tesinioNr" type="xs:integer"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
 </xs:schema>
