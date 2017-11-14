@@ -73,10 +73,9 @@
                 }
             }
         }
-    }
-},
-"required": [
-    "tvarkaraštis"
-],
-"additionalProperties": false
+    },
+    "required": [
+        "tvarkaraštis"
+    ],
+    "additionalProperties": false
 }
