@@ -4,9 +4,11 @@
         <paskaita pavadinimas="Interneto technologijos">
             <teorija>
                 <paskaitosVieta gatvė="Naugarduko" auditorija="101"/>
+                <dėstytojas laipsnis="Lekt.">Vaidas Juseviučius</dėstytojas>
             </teorija>
             <pratybos>
                 <paskaitosVieta gatvė="Didlaukio" auditorija="318"/>
+                <dėstytojas>Justinas Marcinka</dėstytojas>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -50,9 +52,19 @@
         <paskaita pavadinimas="Žmogaus ir kompiuterio saveika">
             <teorija>
                 <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+                <dėstytojas laipsnis="Doc. Dr.">Kristina Lapin</dėstytojas>
+                <pagr.Šaltinis>
+                    <pavadinimas>Designing interactive systems: people, activities, contexts, technologies</pavadinimas>
+                    <autoriai>
+                        <autorius>D. Benyon</autorius>
+                        <autorius>P. Turner</autorius>
+                        <autorius>S. Turner</autorius>
+                    </autoriai>
+                </pagr.Šaltinis>
             </teorija>
             <pratybos>
                 <paskaitosVieta gatvė="Didlaukio" auditorija="319"/>
+                <dėstytojas laipsnis="Doc. Dr.">Kristina Lapin</dėstytojas>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
@@ -72,7 +84,7 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
-                        <numeris tesinys="true" tesinysNr="2">3</numeris>
+                        <numeris>3</numeris>
                         <deadline>2017-12-09</deadline>
                         <temos>
                             <tema pavadinimas="Detalusis prototipas"/>
@@ -86,13 +98,15 @@
         <paskaita pavadinimas="Programų sistemų projektavimas">
             <teorija>
                 <paskaitosVieta gatvė="Didlaukio" auditorija="103"/>
+                <dėstytojas laipsnis="Lekt.">Mindaugas Plūkas</dėstytojas>
             </teorija>
             <pratybos>
                 <paskaitosVieta gatvė="Didlaukio" auditorija="303"/>
+                <dėstytojas laipsnis="Lekt.">Mindaugas Karpinskas</dėstytojas>
                 <užduotys>
                     <užduotis>
                         <numeris>1</numeris>
-                        <deadlineString>asdsagdsa<data>2017-10-13</data>asdasd</deadlineString>
+                        <deadlineString>Reikia atsiskaityti iki <data>2017-10-13</data></deadlineString>
                         <temos>
                             <tema pavadinimas="Template method"/>
                             <tema pavadinimas="Strategy"/>

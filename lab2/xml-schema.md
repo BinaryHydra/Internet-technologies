@@ -6,7 +6,7 @@
 <xs:simpleType name="auditorijaType">
     <xs:restriction base="xs:string">
         <xs:pattern value="[0-9]+[a-zA-Z]?"/>
-    </xs:restriction>   
+    </xs:restriction>
 </xs:simpleType>
 ```
 
@@ -24,7 +24,49 @@ užduotis su kelias įverčiais
 
 ### 1.išvesti apribojimu (restriction) iš jūsų (ne XML Schema) bazinio tipo.
 
+bazinis:
+```xml
+ <xs:simpleType name="žmogusType">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="([\w]+)(\s\w\.)*\s([\w]+)"/>
+    </xs:restriction>
+</xs:simpleType>
+```
+
+išvestas
+```xml
+<xs:complexType name="žmogusSuLaipsiuType">
+    <xs:simpleContent>
+        <xs:extension base="žmogusType">
+            <xs:attribute name="laipsnis" type="xs:string"/>
+        </xs:extension>
+    </xs:simpleContent>
+</xs:complexType>
+```
+
 ### 2.išvesti praplėtimu (extension) iš jūsų bazinio tipo.
+
+bazinis:
+```xml
+<xs:complexType name="žmogusSuLaipsiuType">
+    <xs:simpleContent>
+        <xs:extension base="žmogusType">
+            <xs:attribute name="laipsnis" type="xs:string"/>
+        </xs:extension>
+    </xs:simpleContent>
+</xs:complexType>
+```
+
+išvestas
+```xml
+<xs:complexType name="profesoriusType">
+    <xs:simpleContent>
+        <xs:restriction base="žmogusSuLaipsiuType">
+            <xs:attribute name="laipsnis" type="xs:string" use="required"/> 
+        </xs:restriction>
+    </xs:simpleContent>
+</xs:complexType>
+```
 
 ## 4.Sudėtingi tipai su sudėtingu turiniu:
 
