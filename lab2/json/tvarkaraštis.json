@@ -1,0 +1,140 @@
+{
+  "tvarkaraštis": {
+    "paskaitos": [
+      {
+        "pavadinimas": "Interneto technologijos",
+        "teorija": {
+          "paskaitosVieta": {
+            "gatvė": "Naugarduko",
+            "autitorija": "101"
+          }
+        },
+        "pratybos": {
+          "paskaitosVieta": {
+            "gatvė": "Naugarduko",
+            "autitorija": "101"
+          },
+          "užduotys": [
+            {
+              "numeris": 1,
+              "deadline": "2017-10-15",
+              "temos": [
+                {
+                  "pavadinimas": "XML"
+                },
+                {
+                  "pavadinimas": "XPATH"
+                }
+              ],
+              "įvertis": 1.0
+            },
+            {
+              "numeris": 2,
+              "deadline": "2017-11-12",
+              "temos": [
+                {
+                  "pavadinimas": "JSON schema"
+                }
+              ],
+              "įvertis": 1.0
+            },
+            {
+              "numeris": 3,
+              "deadline": "2017-12-03",
+              "temos": [
+                {
+                  "pavadinimas": "CSS"
+                },
+                {
+                  "pavadinimas": "HTML"
+                }
+              ],
+              "įvertis": 1.0
+            },
+            {
+              "numeris": 4,
+              "deadline": "2017-12-22",
+              "temos": [
+                {
+                  "pavadinimas": "JavaScript"
+                }
+              ],
+              "įvertis": 1.0
+            }
+          ]
+        }
+      },
+      {
+        "pavadinimas": "Žmogaus ir kompiuterio saveika",
+        "teorija": {
+          "paskaitosVieta": {
+            "gatvė": "Didlaukio",
+            "autitorija": "103"
+          }
+        },
+        "pratybos": {
+          "paskaitosVieta": {
+            "gatvė": "Didlaukio",
+            "autitorija": "303"
+          },
+          "užduotys": [
+            {
+              "numeris": 1,
+              "deadline": "2017-10-13",
+              "temos": {
+                "pavadinimas": "Naudotojų poreikiai ir užduočių analizė"
+              },
+              "įvertis": 1.0
+            },
+            {
+              "numeris": 2,
+              "deadline": "2017-11-12",
+              "temos": {
+                "pavadinimas": "Maketų euristinis tikrinimas"
+              },
+              "įvertis": 1.0
+            },
+            {
+              "numeris": 3,
+              "deadline": "2017-12-09",
+              "temos": {
+                "pavadinimas": "Detaliojo prototipo testavimas"
+              },
+              "įvertis": 1.0
+            }
+          ]
+        }
+      },
+      {
+        "pavadinimas": "Programų sistemų projektavimas",
+        "teorija": {
+          "paskaitosVieta": {
+            "gatvė": "Didlaukio",
+            "autitorija": "103"
+          }
+        },
+        "pratybos": {
+          "paskaitosVieta": {
+            "gatvė": "Didlaukio",
+            "autitorija": "319"
+          },
+          "užduotys": [
+            {
+              "numeris": 1,
+              "deadline": "2017-10-13",
+              "temos": [
+                {
+                  "pavadinimas": "Composition"
+                },
+                {
+                  "pavadinimas": "Strategy"
+                }
+              ],
+              "įvertis": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
