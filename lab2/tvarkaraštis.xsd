@@ -24,10 +24,9 @@
 
     <xs:complexType name="genericPaskaitaType">
         <xs:sequence>
-            <xs:element name="paskaitosVieta" type="paskaitosVietaType"/>
+            <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-
 
     <xs:complexType name="paskaitosVietaType">
         <xs:attribute name="gatvė" type="gatvėType"/>
@@ -41,9 +40,20 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:complexType name="genericPaskaitaSuVietaType">
+        <xs:complexContent>
+            <xs:restriction base="genericPaskaitaType">
+                <xs:sequence>
+                    <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="1"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+
     <xs:complexType name="teorijaType">
         <xs:complexContent>
-            <xs:extension base="genericPaskaitaType">
+            <xs:extension base="genericPaskaitaSuVietaType">
                 <xs:sequence>
                     <xs:element name="dėstytojas" type="profesoriusType"/>
                     <xs:element name="pagr.Šaltinis" type="knygaType" minOccurs="0"/>
@@ -70,7 +80,7 @@
         <xs:complexContent>
             <xs:extension base="genericPaskaitaType">
                 <xs:sequence>
-                    <xs:element name="dėstytojas" type="žmogusSuLaipsiuType"/>
+                    <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
                     <xs:element name="užduotys" type="užduotysType">
                         <xs:key name="užduotisKey">
                             <xs:selector xpath="užduotis"/>

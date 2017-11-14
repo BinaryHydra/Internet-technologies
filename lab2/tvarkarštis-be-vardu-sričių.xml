@@ -117,5 +117,15 @@
                 </užduotys>
             </pratybos>
         </paskaita>
+        <paskaita pavadinimas="Matematinė analizė">
+            <teorija>
+                <paskaitosVieta gatvė="Didlaukio" auditorija="213"/>
+                <dėstytojas laipsnis="Asist. Dr.">Antanas Juozulynas</dėstytojas>
+            </teorija>
+            <pratybos>
+                <užduotys>
+                </užduotys>
+            </pratybos>
+        </paskaita>
     </paskaitos>
 </tvarkaraštis>

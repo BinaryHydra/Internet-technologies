@@ -57,7 +57,7 @@ bazinis:
 </xs:complexType>
 ```
 
-išvestas
+išvestas:
 ```xml
 <xs:complexType name="profesoriusType">
     <xs:simpleContent>
@@ -72,7 +72,63 @@ išvestas
 
 ### 1.išvesti apribojimu (restriction) iš jūsų bazinio tipo
 
+bazinis:
+```xml
+ <xs:complexType name="genericPaskaitaType">
+        <xs:sequence>
+            <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+```
+
+išvestas:
+```xml
+<xs:complexType name="genericPaskaitaSuVietaType">
+    <xs:complexContent>
+        <xs:restriction base="genericPaskaitaType">
+            <xs:sequence>
+                <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="1"/>
+            </xs:sequence>
+        </xs:restriction>
+    </xs:complexContent>
+</xs:complexType>
+```
+
 ### 2.išvesti praplėtimu (extension) iš jūsų bazinio tipo
+
+bazinis:
+```xml
+ <xs:complexType name="genericPaskaitaType">
+        <xs:sequence>
+            <xs:element name="paskaitosVieta" type="paskaitosVietaType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+```
+
+išvestas:
+```xml
+    xs:complexType name="pratybosType">
+        <xs:complexContent>
+            <xs:extension base="genericPaskaitaType">
+                <xs:sequence>
+                    <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
+                    <xs:element name="užduotys" type="užduotysType">
+                        <xs:key name="užduotisKey">
+                            <xs:selector xpath="užduotis"/>
+                            <xs:field xpath="numeris"/>
+                        </xs:key>
+                        <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
+                            <xs:selector xpath="užduotis/numeris"/>
+                            <xs:field xpath="@tesinioNr"/>
+                        </xs:keyref>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+```
+
+
 
 ## 5.Pademonstruoti apribojimo principą - parodyti pavyzdį, kai apribojimo principas pažeistas, ir žinoti, kaip reikia pataisyti pavyzdį.
 
