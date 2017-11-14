@@ -1,0 +1,82 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "properties": {
+        "tvarkaraštis": {
+            "type": "object",
+            "properties": {
+                "paskaitos": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "pavadinimas": {
+                                "type": "string"
+                            },
+                            "teorija": {
+                                "type": "object",
+                                "properties": {
+                                    "paskaitosVieta": {
+                                        "type": "object",
+                                        "properties": {
+                                            "gatvė": {
+                                                "type": "string"
+                                            },
+                                            "auditorija": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "pratybos": {
+                                "type": "object",
+                                "properties": {
+                                    "paskaitosVieta": {
+                                        "type": "object",
+                                        "properties": {
+                                            "gatvė": {
+                                                "type": "string"
+                                            },
+                                            "auditorija": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "užduotys": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "numeris": {
+                                                    "type": "number"
+                                                },
+                                                "deadline": {
+                                                    "type": "string"
+                                                },
+                                                "temos": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "įvertis": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"required": [
+    "tvarkaraštis"
+],
+"additionalProperties": false
+}
