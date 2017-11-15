@@ -4,28 +4,40 @@
         "paskaitosVieta": {
             "type": "object",
             "properties": {
-                "gatvė": { "type": "string" },
-                "auditorija": { "type": "string"}
+                "gatvė": { "enum": ["Naugarduko", "Didlaukio"] },
+                "auditorija": { 
+                    "type": "string",
+                    "pattern": "^\\d+[a-zA-Z]?$" 
+                }
             },
             "required": [
                 "gatvė",
                 "auditorija"
-            ]
+            ],
+            "additionalProperties": false
         },
+        "užduotysObject": {
+            "type":"object",
+            "properties": {
+                "užduotys":{ "$ref": "#/definitions/užduotys"}
+            }
+        },
+        
         "užduotys": {
             "type": "array",
-            "items": { "$ref": "#/definitions/užduotis" }
+            "items": { "$ref": "#/definitions/užduotis" },
+            "additionalProperties": false
         },
         "užduotis": {
             "type": "object",
             "properties": {
-                "numeris": { "type": "number"},
-                "deadline": { "type": "string" },
+                "numeris": { "type": "integer", "minimum": 1},
+                "deadline": { "type": "string", "format": "date"},
                 "temos": {
                     "type": "array",
-                    "items": { "type": "string" }
+                    "items": { "type": "string", "maxLength": 120 }
                 },
-                "įvertis": { "type": "number" }
+                "įvertis": { "type": "number", "exclusiveMinimum": 0}
             },
             "required": [
                 "numeris",
@@ -33,7 +45,7 @@
                 "temos",
                 "įvertis"
             ]
-        },
+         },
         "teorija": {
             "type": "object",
             "properties": {
@@ -46,7 +58,11 @@
         "pratybos": {
             "allOf": [
                 {"$ref": "#/definitions/teorija"},
-                {"$ref": "#/definitions/užduotys"}
+                { "properties": {
+                     "užduotys": {"$ref": "#/definitions/užduotys"}
+                    },
+                    "required": ["užduotys"]
+                }
             ]
         },
         "paskaitos": {
@@ -54,13 +70,16 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "pavadinimas": { "type": "string" },
-                    "teorija": { "$ref": "#/definitions/teorija" }
+                    "pavadinimas": {"type": "string"},
+                    "teorija": {"$ref": "#/definitions/teorija"},
+                    "pratybos": { "$ref": "#/definitions/pratybos" }
                 },
                 "required": [
                     "pavadinimas",
-                    "teorija"
-                ]
+                    "teorija",
+                    "pratybos"
+                ],
+                "additionalProperties": false
             }
         }
     },
@@ -73,7 +92,8 @@
             },
             "required": [
                 "paskaitos"
-            ]
+            ],
+            "additionalProperties": false
         }
     },
     "required": [

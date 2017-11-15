@@ -4,11 +4,24 @@
 
 ### 1.Panaudoti bent 4 skirtingi duomenų tipai
 
+panaudota: ```string```, ```integer```, ```number```, ```object```, ```array```
+
 ### 2.Panaudotas enum raktažodis
+
+```json
+"gatvė": { "enum": ["Naugarduko", "Didlaukio"] }
+```
 
 ### 3.Panaudoti bent 4 validacijai skirti raktažodžiai
 
 ### 4.Panaudotos bent 2 reguliarios išraikos
+
+```json
+"auditorija": {
+    "type": "string",
+    "pattern": "^\\d+[a-zA-Z]?$"
+}
+```
 
 ### 5.Realizuotas schemų praplėtimas naudojantis allOf, anyOf, oneOf raktažodžiais
 
