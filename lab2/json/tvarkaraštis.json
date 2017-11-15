@@ -6,13 +6,13 @@
         "teorija": {
           "paskaitosVieta": {
             "gatvė": "Naugarduko",
-            "autitorija": "101"
+            "auditorija": "101"
           }
         },
         "pratybos": {
           "paskaitosVieta": {
             "gatvė": "Naugarduko",
-            "autitorija": "101"
+            "auditorija": "101"
           },
           "užduotys": [
             {
@@ -57,13 +57,13 @@
         "teorija": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
-            "autitorija": "103"
+            "auditorija": "103"
           }
         },
         "pratybos": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
-            "autitorija": "303"
+            "auditorija": "303"
           },
           "užduotys": [
             {
@@ -98,13 +98,13 @@
         "teorija": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
-            "autitorija": "103"
+            "auditorija": "103"
           }
         },
         "pratybos": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
-            "autitorija": "319"
+            "auditorija": "319"
           },
           "užduotys": [
             {
