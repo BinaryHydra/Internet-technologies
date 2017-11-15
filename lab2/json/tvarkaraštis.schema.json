@@ -22,7 +22,6 @@
                 "užduotys":{ "$ref": "#/definitions/užduotys"}
             }
         },
-        
         "užduotys": {
             "type": "array",
             "items": { "$ref": "#/definitions/užduotis" },
@@ -31,13 +30,26 @@
         "užduotis": {
             "type": "object",
             "properties": {
-                "numeris": { "type": "integer", "minimum": 1},
-                "deadline": { "type": "string", "format": "date"},
+                "numeris": { 
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "deadline": { 
+                    "type": "string", 
+                    "format": "date"
+                },
                 "temos": {
                     "type": "array",
-                    "items": { "type": "string", "maxLength": 120 }
+                    "items": { 
+                        "type": "string", 
+                        "maxLength": 120
+                    }
                 },
-                "įvertis": { "type": "number", "exclusiveMinimum": 0}
+                "įvertis": { 
+                    "type": "number", 
+                    "exclusiveMinimum": 0,
+                    "multipleOf" : 0.1
+                }
             },
             "required": [
                 "numeris",
@@ -70,7 +82,7 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "pavadinimas": {"type": "string"},
+                    "pavadinimas": {"type": "string", "pattern": "^[\\w\\s]*[\\w]$"},
                     "teorija": {"$ref": "#/definitions/teorija"},
                     "pratybos": { "$ref": "#/definitions/pratybos" }
                 },
