@@ -53,7 +53,7 @@
         }
       },
       {
-        "pavadinimas": "Žmogaus ir kompiuterio saveika",
+        "pavadinimas": "Zmogaus ir kompiuterio saveika",
         "teorija": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
@@ -94,7 +94,7 @@
         }
       },
       {
-        "pavadinimas": "Programų sistemų projektavimas",
+        "pavadinimas": "Programu sistemu projektavimas",
         "teorija": {
           "paskaitosVieta": {
             "gatvė": "Didlaukio",
@@ -117,6 +117,11 @@
               "įvertis": 1.0
             }
           ]
+        },
+        "šaltinis":{
+          "skaidrės": {
+            "url":"https"
+          }
         }
       }
     ]
