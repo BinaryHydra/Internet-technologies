@@ -1,77 +1,79 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
+    "definitions": {
+        "paskaitosVieta": {
+            "type": "object",
+            "properties": {
+                "gatvė": { "type": "string" },
+                "auditorija": { "type": "string"}
+            },
+            "required": [
+                "gatvė",
+                "auditorija"
+            ]
+        },
+        "užduotys": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/užduotis" }
+        },
+        "užduotis": {
+            "type": "object",
+            "properties": {
+                "numeris": { "type": "number"},
+                "deadline": { "type": "string" },
+                "temos": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "įvertis": { "type": "number" }
+            },
+            "required": [
+                "numeris",
+                "deadline",
+                "temos",
+                "įvertis"
+            ]
+        },
+        "teorija": {
+            "type": "object",
+            "properties": {
+                "paskaitosVieta": { "$ref": "#/definitions/paskaitosVieta" }
+            },
+            "required": [
+                "paskaitosVieta"
+            ]
+        },
+        "pratybos": {
+            "allOf": [
+                {"$ref": "#/definitions/teorija"},
+                {"$ref": "#/definitions/užduotys"}
+            ]
+        },
+        "paskaitos": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "pavadinimas": { "type": "string" },
+                    "teorija": { "$ref": "#/definitions/teorija" }
+                },
+                "required": [
+                    "pavadinimas",
+                    "teorija"
+                ]
+            }
+        }
+    },
     "type": "object",
     "properties": {
         "tvarkaraštis": {
             "type": "object",
             "properties": {
-                "paskaitos": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "pavadinimas": {
-                                "type": "string"
-                            },
-                            "teorija": {
-                                "type": "object",
-                                "properties": {
-                                    "paskaitosVieta": {
-                                        "type": "object",
-                                        "properties": {
-                                            "gatvė": {
-                                                "type": "string"
-                                            },
-                                            "auditorija": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "pratybos": {
-                                "type": "object",
-                                "properties": {
-                                    "paskaitosVieta": {
-                                        "type": "object",
-                                        "properties": {
-                                            "gatvė": {
-                                                "type": "string"
-                                            },
-                                            "auditorija": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "užduotys": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "numeris": {
-                                                    "type": "number"
-                                                },
-                                                "deadline": {
-                                                    "type": "string"
-                                                },
-                                                "temos": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "įvertis": {
-                                                    "type": "number"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                "paskaitos": { "$ref": "#/definitions/paskaitos" }
+            },
+            "required": [
+                "paskaitos"
+            ]
         }
     },
     "required": [
