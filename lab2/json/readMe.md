@@ -1,6 +1,6 @@
 # JSON Schema
 
-## Reikia parašyti JSON Schema (draft-wright-json-schema-??) dokumentą, apibrėžiantį jūsų sukurto JSON dokumento struktūrą, kuriame būtų:
+## Reikia parašyti JSON Schema (draft-wright-json-schema) dokumentą, apibrėžiantį jūsų sukurto JSON dokumento struktūrą, kuriame būtų:
 
 ### 1.Panaudoti bent 4 skirtingi duomenų tipai
 
@@ -21,18 +21,19 @@ panaudota: ```string```, ```integer```, ```number```, ```object```, ```array```
 },
 ```
 ```json
-"items": { 
+"items": {
     "type": "string",
      "maxLength": 120
 }
 ```
 ```json
-"deadline": { 
+"deadline": {
     "type": "string",
-    "format": "date"}
+    "format": "date"
+}
 ```
 ```json
- "įvertis": { 
+ "įvertis": {
     "type": "number",
     "minimum": 0.1,
     "multipleOf" : 0.1
@@ -65,6 +66,24 @@ panaudota: ```string```, ```integer```, ```number```, ```object```, ```array```
             },
             "required": ["užduotys"]
         }
+    ]
+}
+```
+
+```json
+"šaltinis": {
+    "anyOf": [
+        {"$ref":"#/definitions/tinkalapis"},
+        {"$ref":"#/definitions/knyga"}
+    ]
+}
+```
+
+```json
+"įvertis": {
+    "oneOf":[
+        {"$ref": "#/definitions/įvertis"},
+        {"$ref": "#/definitions/įskaita"}
     ]
 }
 ```

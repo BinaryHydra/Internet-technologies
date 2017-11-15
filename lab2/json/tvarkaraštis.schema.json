@@ -45,10 +45,11 @@
                         "maxLength": 120
                     }
                 },
-                "įvertis": { 
-                    "type": "number", 
-                    "exclusiveMinimum": 0,
-                    "multipleOf" : 0.1
+                "įvertis": {
+                    "oneOf":[
+                        {"$ref": "#/definitions/įvertis"},
+                        {"$ref": "#/definitions/įskaita"}
+                    ]
                 }
             },
             "required": [
@@ -84,7 +85,8 @@
                 "properties": {
                     "pavadinimas": {"type": "string", "pattern": "^[\\w\\s]*[\\w]$"},
                     "teorija": {"$ref": "#/definitions/teorija"},
-                    "pratybos": { "$ref": "#/definitions/pratybos" }
+                    "pratybos": { "$ref": "#/definitions/pratybos" },
+                    "šaltinis": { "$ref": "#/definitions/šaltinis"}
                 },
                 "required": [
                     "pavadinimas",
@@ -93,6 +95,38 @@
                 ],
                 "additionalProperties": false
             }
+        },"šaltinis": {
+            "anyOf": [
+                {"$ref":"#/definitions/tinkalapis"},
+                {"$ref":"#/definitions/knyga"}
+            ]
+        }, 
+        "tinkalapis": {
+            "type":"object",
+            "properties": {
+                "url": {"type":"string"}
+            },
+            "required":[
+                "url"
+            ]
+        },
+        "knyga": {
+            "type":"object",
+            "properties": {
+                "autorius":   {"type":"string"},
+                "pavadinimas": {"type":"string"}
+            },
+            "required": [
+                "autorius","pavadinimas"
+            ] 
+        },
+        "įskaita":{"enum": [
+            "įskaita"
+        ]},
+        "įvertis": { 
+            "type": "number", 
+            "minimum": 0.1,
+            "multipleOf" : 0.1
         }
     },
     "type": "object",

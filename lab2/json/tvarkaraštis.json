@@ -80,7 +80,7 @@
               "temos": [
                 "Maketų euristinis tikrinimas"
               ],
-              "įvertis": 1.0
+              "įvertis": "įskaita"
             },
             {
               "numeris": 3,
@@ -119,9 +119,9 @@
           ]
         },
         "šaltinis":{
-          "skaidrės": {
-            "url":"https"
-          }
+            "url":"https",
+            "autorius":"lapin",
+            "pavadinimas":"konspektai"
         }
       }
     ]
