@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tvarkaraštis xmlns="https://mif.vu.lt/lt3/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xs:schemaLocation="tvarkaraštis_ns.xsd">>
+<tvarkaraštis xmlns="https://mif.vu.lt/lt3/" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="https://mif.vu.lt/lt3/ tvarkaraštis.xsd">
     <paskaitos>
         <paskaita pavadinimas="Interneto technologijos">
             <teorija>
@@ -84,7 +84,7 @@
                         <įvertis>1.0</įvertis>
                     </užduotis>
                     <užduotis>
-                        <numeris>3</numeris>
+                        <numeris tesinioNr="2">3</numeris>
                         <deadline>2017-12-09</deadline>
                         <temos>
                             <tema pavadinimas="Detalusis prototipas"/>

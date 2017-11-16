@@ -161,13 +161,13 @@ Validacija vyksta nuo bazinio tipo hierarchiškai einant žemyn
         <xs:extension base="genericPaskaitaType">
             <xs:sequence>
                 <xs:element name="dėstytojas" type="žmogusSuLaipsiuType" minOccurs="0"/>
-                    <xs:element name="užduotys" type="užduotysType">
+                <xs:element name="užduotys" type="užduotysType">
                     <xs:key name="užduotisKey">
-                        <xs:selector xpath="užduotis"/>
-                        <xs:field xpath="numeris"/>
+                        <xs:selector xpath="p:užduotis"/>
+                        <xs:field xpath="p:numeris"/>
                     </xs:key>
-                     <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
-                        <xs:selector xpath="užduotis/numeris"/>
+                    <xs:keyref name="užduotisKeyRef" refer="užduotisKey">
+                        <xs:selector xpath="p:užduotis/p:numeris"/>
                         <xs:field xpath="@tesinioNr"/>
                     </xs:keyref>
                 </xs:element>
@@ -183,4 +183,12 @@ Validacija vyksta nuo bazinio tipo hierarchiškai einant žemyn
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://mif.vu.lt/lt3/"
            targetNamespace="https://mif.vu.lt/lt3/" xmlns:p="https://mif.vu.lt/lt3/"
            elementFormDefault="qualified">
+```
+
+
+```xml
+<tvarkaraštis xmlns="https://mif.vu.lt/lt3/"
+xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:schemaLocation="https://mif.vu.lt/lt3/tvarkaraštis.xsd">
+
 ```
