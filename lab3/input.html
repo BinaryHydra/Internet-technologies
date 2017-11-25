@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Įvedimo forma</title>
+    <link rel="stylesheet" href="tvarkaraštis.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <img src="MIF_logo.png" width="200" alt="MIF" title="MIF">
+        <h1>Paskaitos įvedimas</h1>
+      
+    </header>
+    <nav>
+        <a href="tvarkaraštis.html">Tvarkaraštis</a>
+        <a href="input.html">Įvedimo forma</a>
+    </nav>
+    <section>
+        <h2>Įvedimo forma</h2>
+        Privalomi laukai:
+        <ul>
+            <li>Pavadinimas</li>
+            <li>Data</li>
+        </ul>
+
+        <form name="form" action="tvarkaraštis.html" method="post">
+            Pavadinimas:
+            <input type="text" name="pavadinimas" placeholder="Paskaitos pavadinimas" required>
+            <br> Data:
+            <input type="date" name="data" required>
+            <br> Auditorija:
+            <input type="text" name="auditorija">
+            <br> Vieta:
+            <label>
+                <input type="radio" name="vieta" value="Didl."> Didlaukio g.
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="vieta" value="Naug."> Naugarduko g.
+            </label>
+            <br> Vertinimas:
+            <SELECT multiple size="6" name="vertinimas">
+                <OPTION selected value="egz">Egzaminas</OPTION>
+                <OPTION value="lab">Laboratoriniai darbai</OPTION>
+                <OPTION value="prez">Pranešimas</OPTION>
+                <OPTION value="lank">Lankomumas</OPTION>
+                <OPTION value="klaus">Klausimai paskaitos menu</OPTION>
+                <OPTION value="mini">Mini užduotėlės</OPTION>
+            </SELECT>
+            <br>
+            <input type="submit" value="Išsaugoti">
+            <input type="reset" value="Išvalyti">
+
+        </form>
+    </section>
+</body>
+
+</html>
