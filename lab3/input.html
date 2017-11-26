@@ -9,52 +9,55 @@
 
 <body>
     <header>
-        <img src="MIF_logo.png" width="200" alt="MIF" title="MIF">
-        <h1>Paskaitos įvedimas</h1>
-      
+        <div class="innerPage centered margin-b10 ">
+            <img src="MIF_logo.png" alt="MIF" title="MIF">
+            <h1 class="inline">Tvarkaraštis</h1>
+            <nav class="inline">
+                <a href="tvarkaraštis.html">Tvarkaraštis</a>
+                <a href="input.html">Įvedimo forma</a>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="tvarkaraštis.html">Tvarkaraštis</a>
-        <a href="input.html">Įvedimo forma</a>
-    </nav>
-    <section>
-        <h2>Įvedimo forma</h2>
-        Privalomi laukai:
-        <ul>
-            <li>Pavadinimas</li>
-            <li>Data</li>
-        </ul>
+    <div class="after_header innerPage">
+        <section>
+            <h2>Įvedimo forma</h2>
+            Privalomi laukai:
+            <ul>
+                <li>Pavadinimas</li>
+                <li>Data</li>
+            </ul>
 
-        <form name="form" action="tvarkaraštis.html" method="post">
-            Pavadinimas:
-            <input type="text" name="pavadinimas" placeholder="Paskaitos pavadinimas" required>
-            <br> Data:
-            <input type="date" name="data" required>
-            <br> Auditorija:
-            <input type="text" name="auditorija">
-            <br> Vieta:
-            <label>
-                <input type="radio" name="vieta" value="Didl."> Didlaukio g.
-            </label>
-            <br>
-            <label>
-                <input type="radio" name="vieta" value="Naug."> Naugarduko g.
-            </label>
-            <br> Vertinimas:
-            <SELECT multiple size="6" name="vertinimas">
-                <OPTION selected value="egz">Egzaminas</OPTION>
-                <OPTION value="lab">Laboratoriniai darbai</OPTION>
-                <OPTION value="prez">Pranešimas</OPTION>
-                <OPTION value="lank">Lankomumas</OPTION>
-                <OPTION value="klaus">Klausimai paskaitos menu</OPTION>
-                <OPTION value="mini">Mini užduotėlės</OPTION>
-            </SELECT>
-            <br>
-            <input type="submit" value="Išsaugoti">
-            <input type="reset" value="Išvalyti">
+            <form name="form" action="tvarkaraštis.html" method="post">
+                Pavadinimas:
+                <input type="text" name="pavadinimas" placeholder="Paskaitos pavadinimas" required>
+                <br> Data:
+                <input type="date" name="data" required>
+                <br> Auditorija:
+                <input type="text" name="auditorija">
+                <br> Vieta:
+                <label>
+                    <input type="radio" name="vieta" value="Didl."> Didlaukio g.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="vieta" value="Naug."> Naugarduko g.
+                </label>
+                <br> Vertinimas:
+                <SELECT multiple size="6" name="vertinimas">
+                    <OPTION selected value="egz">Egzaminas</OPTION>
+                    <OPTION value="lab">Laboratoriniai darbai</OPTION>
+                    <OPTION value="prez">Pranešimas</OPTION>
+                    <OPTION value="lank">Lankomumas</OPTION>
+                    <OPTION value="klaus">Klausimai paskaitos menu</OPTION>
+                    <OPTION value="mini">Mini užduotėlės</OPTION>
+                </SELECT>
+                <br>
+                <input type="submit" value="Išsaugoti">
+                <input type="reset" value="Išvalyti">
 
-        </form>
-    </section>
+            </form>
+        </section>
+    </div>
 </body>
 
 </html>

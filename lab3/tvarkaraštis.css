@@ -3,7 +3,42 @@
 }
 
 .centered {
-    align-self: center;
+    margin: auto;
+}
+
+.after_header{
+    margin-top: 90px;
+ }
+
+ .margin-t10 {
+     margin-top: 10px; 
+ }
+
+ .margin-b10{
+     margin-bottom: 10px;
+ }
+ 
+.innerPage {
+    max-width: 1024px;
+}
+
+body {
+    width: 1024px;
+    margin: auto;
+}
+img[title="MIF"] {
+    height: 60px;
+    position: relative;
+    top: 10px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    display: block;
+    background-color: rgb(7, 199, 173);
+    left: 0;
+    right: 0;
 }
 
 p a {
@@ -14,10 +49,14 @@ nav > a  {
     font: Arial;
     color: black;
     background-color: white;
-    border: 2px rgb(25, 121, 1) solid;
+    border: 2px rgb(1, 13, 121) solid;
     padding: 10px 20px;
     text-decoration: none;
     display: inline-block;
+    position: relative;
+    top: -12px;
+
+    
 }
 
 h3[danger] {
