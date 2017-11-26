@@ -10,10 +10,6 @@
     margin-top: 90px;
  }
 
- .margin-t10 {
-     margin-top: 10px; 
- }
-
  .margin-b10{
      margin-bottom: 10px;
  }
@@ -45,6 +41,10 @@ p a {
     text-decoration: inherit;
 }
 
+nav {
+    float: right;
+}
+
 nav > a  {
     font: Arial;
     color: black;
@@ -54,8 +54,7 @@ nav > a  {
     text-decoration: none;
     display: inline-block;
     position: relative;
-    top: -12px;
-
+    top: 20px;
     
 }
 
@@ -90,10 +89,17 @@ aside {
     border-style: solid;
 }
 
-@media screen and (max-width: 720px) {
-    nav > a  {
-        display: float !important;
-        margin-top: 20px;
-    
+@media screen and (max-width: 620px) {
+    header {
+        margin: auto;
+    }
+
+    nav {
+        float: none !important; 
+        display: block !important; 
+    }
+
+    nav > a {
+        top: 5px;
     }
 }
