@@ -8,7 +8,8 @@ var dates = [
     {text: 'sometasdext', createdAt: '2001-02-01'}
 ];
 
-document.getElementById("notesList").innerHTML = "stakshklfad"
+foreach
+document.getElementById("notesList").innerHTML = "<li> " +  + "</li> "
 
 
 function validate (date) {
@@ -31,4 +32,4 @@ function validate (date) {
     var a = document.getElementById("submitBtn").disabled = false;
     console.log(newdate);
     console.log(newdate.getDate === day);
-} 
+} sdaaaaaaw
