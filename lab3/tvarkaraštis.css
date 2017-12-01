@@ -37,6 +37,16 @@ header {
     right: 0;
 }
 
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+.red.blue {
+    background-color: purple;
+}
 p a {
     text-decoration: inherit;
 }
@@ -46,7 +56,6 @@ nav {
 }
 
 nav > a  {
-    font: Arial;
     color: black;
     background-color: white;
     border: 2px rgb(1, 13, 121) solid;
@@ -63,10 +72,6 @@ nav > a  {
 
 body {
     background-color: #dce2fd;
-}
-
-h3[danger] {
-    color: red;
 }
 
 table {
@@ -109,7 +114,7 @@ footer {
     }
 
     nav {
-        float: none !important; 
+        float: none; 
         display: block !important; 
     }
 
