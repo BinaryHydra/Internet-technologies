@@ -18,7 +18,7 @@ function validate (date) {
     var year = parseInt(elements[0]);
     var month = parseInt(elements[1])-1;
     var day = parseInt(elements[2]);
-    if (Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || month < 0 || month > 11 || day > 31){
+    if (Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || month < 0 || month > 11 || day<1 || day > 31){
         return false;
     }
     var day = parseInt(elements[2]);
@@ -32,4 +32,4 @@ function validate (date) {
     var a = document.getElementById("submitBtn").disabled = false;
     console.log(newdate);
     console.log(newdate.getDate === day);
-} sdaaaaaaw
+}
