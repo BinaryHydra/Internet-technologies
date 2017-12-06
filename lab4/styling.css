@@ -9,9 +9,15 @@ label{
     width: 180px;
     text-align: left;
 }
-
+span{
+     margin:2px
+}
 .error {
     color: red;
+    display: none;
+}
+
+.invisible{
     display: none;
 }
 

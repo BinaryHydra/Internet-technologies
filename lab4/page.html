@@ -11,7 +11,7 @@
     <main class="innerPage">
         <section>
             <h2>Vertinimas</h2>
-            <table>
+            <table id="cal">
                 <tr>
                     <th>P.</th>
                     <th>A.</th>
@@ -28,7 +28,7 @@
                 <h2>Įvedimo forma</h2>
                 <form name="form" action="javascript:void(0);">
                     <label> Pavadinimas:</label>
-                    <input id="pavadinimas" type="text" name="pavadinimas" errorId="pavadinimasError" oninput="validateNotEmpty(this)">
+                    <input id="pavadinimas" type="text" name="pavadinimas" oninput="validateNotEmpty(this)">
                     <span id="pavadinimasError" class="error">Laukas privalomas</span>
                     <br> <label >Data: (YYYY-MM-DD)</label>
                     <input id="data" type="text" name="data" oninput="validateDate(this)">
@@ -37,25 +37,21 @@
                     <input id="ivertinimas" type="text" name="įvertinimas" oninput="validatePositiveInt(this)">
                     <span id="ivertinimasError" class="error">Vertinimas turi būti teigiamas skaičius</span>
                     <br>
-                    <button onclick="save()">Išsaugoti</button>
-                    <button>Ištrinti</button>
+                    <button id="saveNewButton" onclick="save()">Išsaugoti naują</button>
+                    <button id="saveEditButton" class="invisible" onclick="saveEdit()">Išsaugoti pakeitimus</button>
+                    <button id="deleteButton"  class="invisible" onclick="deleteNode()">Ištrinti</button>
                 </form>
 
                 <ul id="list">
-                    <li>
-                        <span>pavadinimas</span>
-                        <span>2017-01-05</span>
-                        <span>8</span>
-                    </li>
                 </ul>
             </section>
         </div>
     </main>
-    <script src="scripts.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
