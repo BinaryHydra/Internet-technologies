@@ -1,4 +1,3 @@
-
 var events = [];
 $(document).ready(createCalendar(new Date()));
 var calendarDate;
@@ -281,7 +280,6 @@ function initialize() {
             console.log(jqXHR);
             console.log(errorThrown);
         }
-
     });
     
 }
@@ -308,12 +306,16 @@ function serialize(){
 
 function deserialize(){
     $("#status").text("");
-    console.log("de")
     $.get(saveUri, function (data, textStatus, jqXHR) {
         $("#status").text(textStatus);
         if (textStatus === "success") {
-            events = JSON.parse(data);
+            events = data;
             console.log(events);
+            events.forEach(event => {
+                addEvent(event.id, event.name, event.date, event.number);
+                appendList(event.name, event.date, event.number);
+            });
+            drawEvents()
         }
     });
 }
