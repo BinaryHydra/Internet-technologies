@@ -44,6 +44,17 @@
 
                 <ul id="list">
                 </ul>
+            <label>Uri:</label>
+            <input id="saveUri" type="text" oninput="updateUri(value)">
+            <br>
+            <label>Dabartinis uri:</label>
+            <span id="uri">Nėra</span>
+            <br>
+            <br>
+            <button onclick="initialize()">Save</button>
+            <button onclick="serialize()">Update</button>
+            <button onclick="deserialize()">Load</button>
+            <span id="status"/>
             </section>
         </div>
     </main>

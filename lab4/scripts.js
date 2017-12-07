@@ -1,11 +1,13 @@
 
-var input = [];
+var events = [];
 $(document).ready(createCalendar(new Date()));
+var calendarDate;
 
 //calendar
 
 function createCalendar(monthDate) {
     monthDate.setDate(1)
+    calendarDate = monthDate;
     var startingWeekDay = monthDate.getDay();
     var calendar = $("#cal");
    
@@ -22,7 +24,7 @@ function createCalendar(monthDate) {
         if (i < startingWeekDay) {
             row.append($("<td/>")) 
         } else {
-            row.append($("<td>"+ (j++)+"</td>"));;
+            row.append($("<td id=\"td"+j +"\">"+ (j++)+"</td>"));;
         }
     }
     calendar.append(row);
@@ -32,14 +34,73 @@ function daysInMonth(date) {
     return new Date(date.getYear(), date.getMonth()+1, 0).getDate();
 }
 
-function addEvent(nameVar, dateVar, numberVar){
-    input.push({name:nameVar, date: dateVar, number:numberVar});
+function addEvent(idVar,nameVar, dateVar, numberVar){
+    events.push({id:idVar, name:nameVar, date:dateVar, number:numberVar});
+}
+
+function findEventById(id){
+    return events.find(event => event.id = id);
+}
+
+function findEventIndexById(id){
+    return events.findIndex(event => event.id = id);
+}
+
+function removeEvent(id) {
+    var event = findEventById(id);
+    var date = event.date;
+    events.splice(findEventIndexById(id), 1);
+    redrawDate(date);
+}
+
+function updateEvent(id, name, date, number) {
+    var event = findEventById(id);
+    oldDate = event.date;
+    event.name = name;
+    event.date = date;
+    event.number = number;
+    redrawDate(oldDate);
+    redrawDate(date);
 }
 
 function drawEvents(){
-    $("td")
+    for (var i = 0; i< events.length; i++) {
+        var event = events[i]   
+        date = parseDate(event.date);
+        if (date.getMonth() === calendarDate.getMonth() && date.getYear() === calendarDate.getYear()){
+            addStyle($("#td" + date.getDate()));
+        }
+    }
 }
 
+function addStyle(element){
+    element.css(
+        {
+            "border-color": "rgb(20,235,10)"
+        }
+    )
+}
+
+function redrawDate(date){
+    jsDate = parseDate(date);
+    if (jsDate.getMonth() !== calendarDate.getMonth() || jsDate.getYear() !== calendarDate.getYear()){
+        console.log("no");
+        return;
+    }
+    var td = $("#td" + jsDate.getDate());
+    td.removeAttr("style");
+    for (var i = 0; i< events.length; i++) {
+        var event = events[i];
+        if (event.date === date) {   
+            addStyle(td);
+        } 
+    }
+}
+
+function parseDate(dateString){
+    var elements = dateString.split("-");
+    return new Date(elements[0],elements[1]-1,elements[2]);
+}
 // validation
 
 function validateNotEmpty(inputElement) {
@@ -116,7 +177,10 @@ function save() {
     if (editMode) {
         changeEditMode(false);
     }
+    addEvent(idCounter,name, date, assessment);
     appendList(name, date, assessment);
+    idCounter++;
+    drawEvents()
 }
 
 function appendList(name, date, assessment) {
@@ -125,7 +189,6 @@ function appendList(name, date, assessment) {
     li.append(createSpanWithText(name, "name" + idCounter));
     li.append(createSpanWithText(assessment,"assessment" +idCounter));
     $("#list").append(li);
-    idCounter++;
 }
 
 function createSpanWithText(text, id){
@@ -146,10 +209,12 @@ function edit(li){
 }
 
 function deleteNode(){
-    if (edit !== undefined) {
-        $("#"+editId).remove();
-        changeEditMode(false);
+    if (edit === undefined) {
+        return
     }
+    $("#"+editId).remove();
+    changeEditMode(false);
+    removeEvent(editId);
 }
 
 function saveEdit(){
@@ -169,6 +234,7 @@ function saveEdit(){
     $("#"+editId+ " > " + "span[id^=name]").text(name);
     $("#"+editId+ " > " + "span[id^=date]").text(date);
     $("#"+editId+ " > " + "span[id^=assessment]").text(assessment) ;
+    updateEvent(editId,name,date,assessment);
 }
 
 function changeEditMode(boolean) {
@@ -180,4 +246,74 @@ function changeEditMode(boolean) {
         $("#saveEditButton").hide();
         $("#deleteButton").hide();
     }
+}
+
+// saving(
+
+var saveUri;
+
+function updateUri(uri){
+    saveUri = uri;
+    showUri();
+}
+function showUri() {
+   console.log($("#uri"));
+    $("#uri").text(saveUri);
+}
+
+
+function initialize() {
+    $("#status").text("");
+    var data = JSON.stringify(events);
+    $.ajax({
+        url:"https://api.myjson.com/bins",
+        type:"POST",
+        data: data,
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, textStatus, jqXHR){
+            $("#status").text(textStatus);
+            saveUri = data.uri;
+            showUri();
+        },
+        error: function (jqXHR, textStatus, errorThrown){
+            $("#status").text(textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+        }
+
+    });
+    
+}
+
+function serialize(){
+    $("#status").text("");
+    var data = JSON.stringify(events);
+    $.ajax({
+        url: saveUri,
+        type: "PUT",
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            $("#status").text(textStatus);
+        },
+        error: function (jqXHR, textStatus, errorThrown){
+            $("#status").text(textStatus);
+            console.log(jqXHR);
+            console.log(errorThrown);
+        }
+    });
+}
+
+function deserialize(){
+    $("#status").text("");
+    console.log("de")
+    $.get(saveUri, function (data, textStatus, jqXHR) {
+        $("#status").text(textStatus);
+        if (textStatus === "success") {
+            events = JSON.parse(data);
+            console.log(events);
+        }
+    });
 }
