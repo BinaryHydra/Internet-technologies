@@ -19,7 +19,7 @@ function start(){
                 showTime();
             }
          },1000)
-    initialized = true;
+        initialized = true;
     }
 }
 
@@ -57,3 +57,5 @@ function replaceStartStop() {
 function lap(){
     list.append("<li>"+timer.text()+"</li>");
 }
+
+function clear()

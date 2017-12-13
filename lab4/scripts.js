@@ -1,7 +1,7 @@
 var events = [];
 $(document).ready(createCalendar(new Date()));
 var calendarDate;
-
+const listItemName = "listItem"
 //calendar
 
 function createCalendar(monthDate) {
@@ -15,7 +15,7 @@ function createCalendar(monthDate) {
     startingWeekDay = startingWeekDay -1;
     var row;
     var monthDays = daysInMonth(monthDate);
-    for (var i=0,j=1; i < monthDays+startingWeekDay; i++)  { // Week start fix 
+    for (let i=0,j=1; i < monthDays+startingWeekDay; i++)  { // Week start fix 
         if (i % 7 === 0) {
             row = $("<tr/>");
         }
@@ -38,11 +38,15 @@ function addEvent(idVar,nameVar, dateVar, numberVar){
 }
 
 function findEventById(id){
-    return events.find(event => event.id = id);
+    id = id.replace(listItemName,"");
+    console.log(id);
+    console.log(events);
+    return events.find(event => event.id == id);
 }
 
 function findEventIndexById(id){
-    return events.findIndex(event => event.id = id);
+    id = id.replace(listItemName,"");
+    return events.findIndex(event => event.id == id);
 }
 
 function removeEvent(id) {
@@ -53,8 +57,8 @@ function removeEvent(id) {
 }
 
 function updateEvent(id, name, date, number) {
-    var event = findEventById(id);
-    oldDate = event.date;
+    let event = findEventById(id);
+    let oldDate = event.date;
     event.name = name;
     event.date = date;
     event.number = number;
@@ -63,21 +67,23 @@ function updateEvent(id, name, date, number) {
 }
 
 function drawEvents(){
-    for (var i = 0; i< events.length; i++) {
+    for (let i = 0; i< events.length; i++) {
         var event = events[i]   
         date = parseDate(event.date);
         if (date.getMonth() === calendarDate.getMonth() && date.getYear() === calendarDate.getYear()){
-            addStyle($("#td" + date.getDate()));
+            addEventStyle($("#td" + date.getDate()), event);
         }
     }
 }
 
-function addStyle(element){
-    element.css(
-        {
-            "border-color": "rgb(20,235,10)"
-        }
-    )
+function addEventStyle(element, event){
+    element.css("border-color","rgb(0, 95, 74)") 
+    let list = element.children().filter("ul");
+    if (list.length === 0) {
+        list = $('<ul class="tooltip"/>');
+        element.append(list);
+    }
+    list.append($("<li>" + event.name + "</li>"));
 }
 
 function redrawDate(date){
@@ -86,14 +92,22 @@ function redrawDate(date){
         console.log("no");
         return;
     }
-    var td = $("#td" + jsDate.getDate());
+    let td = $("#td" + jsDate.getDate());
     td.removeAttr("style");
-    for (var i = 0; i< events.length; i++) {
-        var event = events[i];
+    td.children().remove();
+    for (let i = 0; i< events.length; i++) {
+        let event = events[i];
         if (event.date === date) {   
-            addStyle(td);
+            addEventStyle(td, event);
         } 
     }
+}
+
+function clearCalendar(){
+    let td = $("td");
+    td.removeAttr("style");
+    td.children().remove();
+    $("#list").children().remove();
 }
 
 function parseDate(dateString){
@@ -124,7 +138,7 @@ function validatePositiveInt(inputElement) {
 }
 
 function checkIfIntIsPositive(input){
-    return /^\+?[0-9]+$/.test(input)
+    return /^\+?[1-9][0-9]*$/.test(input)
 }
 
 function validateDate(inputElement) {
@@ -140,10 +154,10 @@ function checkIfDateIsValid (input) {
     var year = parseInt(elements[0]);
     var month = parseInt(elements[1])-1;
     var day = parseInt(elements[2]);
-    if ((day < 10 && elements[2].length > 1)|| elements[2].length > 2) {
+    if (year === undefined || month === undefined || day === undefined || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || year < 1900 || year >9999 || month < 0 || month > 11 || day < 1 || day > 31){
         return false;
     }
-    if (year === undefined || month === undefined || day === undefined || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || year < 1900 || year >9999 || month < 0 || month > 11 || day < 1 || day > 31){
+    if ((day < 10 && elements[2].length > 1)|| elements[2].length > 2) {
         return false;
     }
     var newdate = new Date(year,month,day);
@@ -170,7 +184,6 @@ function save() {
     var date = $("#data").val()
     var assessment = $("#ivertinimas").val();
     if (checkIfEmpty(name) || !checkIfDateIsValid(date) || !checkIfIntIsPositive(assessment)) {
-        //console.log("cannot save" + checkIfEmpty(name) + !checkIfDateIsValid(date) + !checkIfIntIsPositive(assessment) )
         return;
     }
     if (editMode) {
@@ -179,14 +192,17 @@ function save() {
     addEvent(idCounter,name, date, assessment);
     appendList(name, date, assessment);
     idCounter++;
-    drawEvents()
+    redrawDate(date);
 }
 
-function appendList(name, date, assessment) {
-    var li =  $("<li id=\"listItem"+idCounter+"\" onClick=\"edit(this)\"></li>");
-    li.append(createSpanWithText(date, "date" + idCounter));
-    li.append(createSpanWithText(name, "name" + idCounter));
-    li.append(createSpanWithText(assessment,"assessment" +idCounter));
+function appendList(name, date, assessment,id) {
+    if (id === undefined) {
+        id = idCounter;
+    }
+    var li =  $("<li id=\"" + listItemName + +id+"\" onClick=\"edit(this)\"></li>");
+    li.append(createSpanWithText(date, "date" + id));
+    li.append(createSpanWithText(name, "name" + id));
+    li.append(createSpanWithText(assessment,"assessment" +id));
     $("#list").append(li);
 }
 
@@ -208,8 +224,8 @@ function edit(li){
 }
 
 function deleteNode(){
-    if (edit === undefined) {
-        return
+    if (editId === undefined) {
+        return;
     }
     $("#"+editId).remove();
     changeEditMode(false);
@@ -217,14 +233,13 @@ function deleteNode(){
 }
 
 function saveEdit(){
-    if (edit === undefined) {
+    if (editId === undefined) {
         return;
     }
     var name = $("#pavadinimas").val()
     var date = $("#data").val()
     var assessment = $("#ivertinimas").val();
     if (checkIfEmpty(name) || !checkIfDateIsValid(date) || !checkIfIntIsPositive(assessment)) {
-        //console.log("cannot save" + checkIfEmpty(name) + !checkIfDateIsValid(date) + !checkIfIntIsPositive(assessment) )
         return;
     }
     if (editMode) {
@@ -256,7 +271,6 @@ function updateUri(uri){
     showUri();
 }
 function showUri() {
-   console.log($("#uri"));
     $("#uri").text(saveUri);
 }
 
@@ -305,15 +319,20 @@ function serialize(){
 }
 
 function deserialize(){
+    if (saveUri === undefined || saveUri === ""){
+        return;
+    }
+    
     $("#status").text("");
     $.get(saveUri, function (data, textStatus, jqXHR) {
         $("#status").text(textStatus);
         if (textStatus === "success") {
             events = data;
-            console.log(events);
+            clearCalendar();
+            idCounter = 0;
             events.forEach(event => {
-                addEvent(event.id, event.name, event.date, event.number);
-                appendList(event.name, event.date, event.number);
+                appendList(event.name, event.date, event.number, event.id);
+                idCounter++;
             });
             drawEvents()
         }
