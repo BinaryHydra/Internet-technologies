@@ -154,7 +154,7 @@ function checkIfDateIsValid (input) {
     var year = parseInt(elements[0]);
     var month = parseInt(elements[1])-1;
     var day = parseInt(elements[2]);
-    if (year === undefined || month === undefined || day === undefined || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || year < 1900 || year >9999 || month < 0 || month > 11 || day < 1 || day > 31){
+    if (!year|| month === undefined || day === undefined || isNaN(year) || Number.isNaN(month) || Number.isNaN(day) || year < 1900 || year >9999 || month < 0 || month > 11 || day < 1 || day > 31){
         return false;
     }
     if ((day < 10 && elements[2].length > 1)|| elements[2].length > 2) {
@@ -265,7 +265,8 @@ function changeEditMode(boolean) {
 // saving(
 
 var saveUri;
-
+var apiUri = "https://jsonblob.com/api/jsonBlob/";
+var responseId;
 function updateUri(uri){
     saveUri = uri;
     showUri();
@@ -279,20 +280,21 @@ function initialize() {
     $("#status").text("");
     var data = JSON.stringify(events);
     $.ajax({
-        url:"https://api.myjson.com/bins",
+        url: apiUri,
         type:"POST",
         data: data,
         contentType:"application/json; charset=utf-8",
         dataType:"json",
         success: function(data, textStatus, jqXHR){
             $("#status").text(textStatus);
-            saveUri = data.uri;
+            responseId = jqXHR.getResponseHeader("x-jsonblob");
+            saveUri = apiUri  + response;
             showUri();
         },
         error: function (jqXHR, textStatus, errorThrown){
             $("#status").text(textStatus);
-            console.log(jqXHR);
-            console.log(errorThrown);
+            console.error(jqXHR);
+            console.error(errorThrown);
         }
     });
     
@@ -309,11 +311,14 @@ function serialize(){
         dataType: "json",
         success: function (data, textStatus, jqXHR) {
             $("#status").text(textStatus);
+            console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
         },
         error: function (jqXHR, textStatus, errorThrown){
             $("#status").text(textStatus);
-            console.log(jqXHR);
-            console.log(errorThrown);
+            console.error(jqXHR);
+            console.error(errorThrown);
         }
     });
 }
