@@ -196,6 +196,24 @@ mažiausios kainos knyga - ```//knyga[not(kaina > //knyga/kaina)]```
 Atributu deklaracija -
  default, fixed, use[optional, prohibited, required]
 
+```xml
+<all
+maxOccurs = 1 : 1
+minOccurs = (0 | 1) : 1>
+Content: (annotation?, element*)
+</all>
+<choice
+maxOccurs = (nonNegativeInteger | unbounded) : 1
+minOccurs = nonNegativeInteger : 1>
+Content: (annotation?, (element|choice|sequence)*)
+</choice>
+<sequence
+maxOccurs = (nonNegativeInteger | unbounded) : 1
+minOccurs = nonNegativeInteger : 1>
+Content: (annotation?, (element|choice|sequence)*)
+</sequence>>
+```
+
 ####Simple type
 
 ```xs:string```
@@ -211,7 +229,24 @@ galima naudoti abribojimus: ```pattern```, ```enumeration```, ```minInclusive```
 |Turinio rūšys|complexContent mixed=true|complexContent|simpleContent|complexContent, simpleContent|
 |Gali turėti vaikinių žymių|Taip|Taip|Ne|Ne|
 |Gali turėti tekstą|Taip|Ne|Taip|Ne|
-|Apribojimas||| complexType ((simpleContent) arba (complexContent ir minOccurs=0))||
-||||Galima apriboti žymės/atributo tipą, uždrausti atributo naudojimą||
-|Išplėtimas|||(simpleType arba complexType) simpleContent||
-||||Galima pridėt tik atributus||
+
+Paprastas tipas išvedamas:
+
+* apribojimu iš *complexType ((simpleContent) arba (complexContent ir minOccurs=0))* - galima apriboti žymės/atributo tipą, uždrausti atributo naudojimą
+* išplėtimu iš *(simpleType arba complexType) simpleContent* - galima pridėt tik atributus
+
+Išplečiant *complexType* žymės pridedamos tik į galą
+
+Tuščias turinys turi tik atributus.
+
+```xml
+<xs:element name="book">
+    <xs:complexType>
+        <xs:attribute name="isbn" type="isbnType"/>
+    </xs:complexType>
+</xs:element> 
+```
+
+Apribojimo principas - ribojimas tipas turi atitikti ir tėvinių tipų taisykles.
+Dviprasmiško turinio taisyklė - neturi būti kelių vienai prasidenančių žymių (sequence) choise struktūroj.
+Neprieštaringo deklaravimo taisyklė - negali būti vienodai pavadintų, bet skirtingų tipų žymių vienoj strukturoj.
