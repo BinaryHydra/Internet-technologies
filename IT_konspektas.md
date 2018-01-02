@@ -30,7 +30,7 @@
 ```
 
 * *bk* - prefiksas (sutrumpintas vardas)
-* *  - vardų strities vardas
+* *http://loc.gov/books*  - vardų strities vardas
 * *http://loc.gov/books:title*, *http://loc.gov/books:language* - kvalifikuoti (tikri) vardai
 * *book* neturi vardų strities
 
@@ -52,8 +52,6 @@ Atributų unikalumas
 
 * ```/``` šakininis mazgas
 * ```/*``` šakninė žymė
-
-
 
 ### Ašys
 
@@ -177,16 +175,6 @@ praleistas argumentas <-> self::node()
 
 mažiausios kainos knyga - ```//knyga[not(kaina > //knyga/kaina)]```
 
-### JSON
-
-#### Duomenų tipai:
-
-* skaičius - su kableliu arba be, galima eksponentinė išraiška(```1.0E+2```) negali būti nurodytas ```NaN```
-* eilutė (string) - išskiriama "", escape simbolis - \
-* boolean - ```true``` arba ```false```
-* masyvas - ```[x,y,z]``` nebutinai vienodo tipo duomenys
-* ```null```
-* objektas ```{"x":y, "z":w}```, nesvarbi raktų tvarka ir unikalumas
 
 ### XML schema
 
@@ -216,11 +204,11 @@ Content: (annotation?, (element|choice|sequence)*)
 
 ####Simple type
 
-```xs:string```
-galima naudoti abribojimus: ```length```, ```minLength```, ```maxLength```, ```pattern```, ```enumeration```
+``xs:string``
+galima naudoti abribojimus: ``length``, ``minLength``, ``maxLength``, ``pattern``, ``enumeration``
 
-```xs:date```, ```xs:integer```
-galima naudoti abribojimus: ```pattern```, ```enumeration```, ```minInclusive```, ```minExclusive```, ```maxInclusive```, ```maxExclusive```, ```totalDigits``` (sk. kiekis),```fractionDigits``` (sk. po kablelio)
+``xs:date``, ``xs:integer``
+galima naudoti abribojimus: ``pattern``, ``enumeration``, ``minInclusive``, ``minExclusive``, ``maxInclusive``, ``maxExclusive``, ``totalDigits`` (sk. kiekis),```fractionDigits``` (sk. po kablelio)
 
 #### Turinio tipai
 
@@ -244,9 +232,249 @@ Tuščias turinys turi tik atributus.
     <xs:complexType>
         <xs:attribute name="isbn" type="isbnType"/>
     </xs:complexType>
-</xs:element> 
+</xs:element>
 ```
 
-Apribojimo principas - ribojimas tipas turi atitikti ir tėvinių tipų taisykles.
-Dviprasmiško turinio taisyklė - neturi būti kelių vienai prasidenančių žymių (sequence) choise struktūroj.
+Apribojimo principas - ribojimas tipas turi atitikti ir tėvinių tipų taisykles.  
+Dviprasmiško turinio taisyklė - neturi būti kelių vienai prasidenančių žymių (sequence) choise struktūroj.  19.8 trillion  
 Neprieštaringo deklaravimo taisyklė - negali būti vienodai pavadintų, bet skirtingų tipų žymių vienoj strukturoj.
+
+#### Unikalumas
+
+```xml
+<xs:element name="knygųSąrašas" type="...">
+    <xs:unique name="KnygųRibojimas">
+        <xs:selector xpath="grupė/knyga"/>
+        <xs:field xpath="autorius/vardas"/>
+        <xs:field xpath="autorius/pavardė"/>
+    </xs:unique>
+</xs:element>
+```
+
+``unique`` reikšmės nerivalomos, ``key`` - privalomos  
+``keyref`` turi būti paskeltas tame pačiame lygyje arba aukščiau nei ``key``/``unique``
+``xpath`` gali eit tik gilyn, ir jei naudojama vardų stritis reikia naudoti prefiksus prie kievieno žingsnio ``xpath=p:grupė/p:knyga``
+
+#### Schemos susiejimas
+
+be vardų srities
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<užsakymas data="2006-02-28"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="uzsakymas.xsd">
+</užsakymas>
+```
+
+su vardų sritim
+
+<?xml version="1.0" encoding="UTF-8"?>
+<užsakymas
+    xmlns="http://uzsakymai.lt"
+    xsi:schemaLocation="http://uzsakymai.lt uzsakymas.xsd"
+    xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance">
+    <prekiųSąrašas>...</prekiųSąrašas>
+</užsakymas>
+
+unqualified -  lokalioms žymėms negalioja globalus xmlns:, galioja pagal tėvinį type
+
+```xml
+<x:author xmlns:x="http://example.org/publishing">
+   <name>Aaron Skonnard</name>
+   <phone>(801)390-4552</phone>
+</x:author>
+```
+
+qualified - lokalioms žymems galioja globalus xmlns.
+
+```xml
+<x:author xmlns:x="http://example.org/publishing">
+   <x:name>Aaron Skonnard</name>
+   <x:phone>(801)390-4552</phone>
+</x:author>
+```
+
+Galioja dokumentams, ne schemai.
+
+## JSON
+
+### Duomenų tipai:
+
+* skaičius - su kableliu arba be, galima eksponentinė išraiška(```1.0E+2```) negali būti nurodytas ```NaN```
+* eilutė (string) - išskiriama "", escape simbolis - \
+* boolean - ```true``` arba ```false```
+* masyvas - ```[x,y,z]``` nebutinai vienodo tipo duomenys
+* ```null```
+* objektas ```{"x":y, "z":w}```, nesvarbi raktų tvarka ir unikalumas
+
+## JSON schema
+
+tie patys tipai + ```integer```
+
+galima nurodyti kelis tipus ```"pavadinimas": { "type": ["number", "string"] }```
+
+### Tipai
+
+#### String
+
+* minLength,maxLength
+* pattern (regex)
+* format (date-time, email, hostname, ipv4, ipv6, uri)
+
+#### integer, number
+
+* multipleOf (kartotinis)
+* minimum, maximum, exclusiveMinimum, exclusiveMaximum
+
+#### object
+* properties ({raktas - reikšmė (tipas)})
+* additionalProperties (boolean) 
+* required ({sąrašas raktų})
+* minProperties, maxProperties (skaičius)
+
+#### array
+
+* items ({ elementų ribojima pvz.: "type":})
+* additionalItems (Ar leidžiami papildomi neaprašyti elementai)
+* minItems, maxItems (skaičius)
+* uniqueItems (boolean)
+
+#### enum
+* {"enum":[values]}
+* type
+
+### perpanaudojimas
+
+definitions ir ref
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "adresas": {
+      "type": "object",
+      "properties": {
+        "gatvė":    { "type": "string" },
+        "miestas":  { "type": "string" },
+        "šalis":    { "type": "string" }
+      },
+      "required": ["gatvė", "miestas", "šalis"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "sąskaitos_adresas": { "$ref": "#/definitions/adresas" },
+    "pristatymo_adresas": { "$ref": "#/definitions/adresas" }
+  }
+}
+```
+
+### praplėtimas
+
+* allOf
+* anyOf
+* oneOf
+
+```json
+"pristatymo_adresas": {
+  "allOf": [
+    // įtraukiam bazinį adresą
+    { "$ref": "#/definitions/adresas" },
+    // ..ir praplečiam jį pristatymo adreso specifika
+    { "properties": {
+        "tipas": { "enum": [ "namų", "darbo" ] }
+      },
+      "required": ["tipas"]
+    }
+  ]
+}
+```
+
+``schema`` nurodo kad schema ir schemos versija (rekomentuojama)  
+``id`` nurodo unikalų identifikatorių ir bazinį kelią kurio ieškos ``$ref`` (rekomenduoja url, su failu, ref ieškos tame pačiame katologe)
+
+## HTML
+
+pvz.:
+
+```html
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirmas puslapis</title>
+</head>
+<body>
+    HTML5 pavyzdys
+</body>
+</html>
+```
+
+* doctype - html versija, nusprendžiama apdorojimo režimas (90+)
+* html - šakninis elementas, vaikai head ir body, atributas lang - rekomendacija lokalizacijai
+* head - metaduomenys, vartotojui nematomi
+* body - turinys, kuris atvaizduojamas 
+
+### head
+
+``title`` beveik visuomet privalomas (išskyrus iframe?)
+``charset`` rekomenduojamas
+
+### kitos žymes
+
+* ``<h1>Skyrius<h1>``
+* ``<p>Paragrafas<p>``
+* ``<em>Pabrėžiamas, pasviręs <em>``
+* ``<img src="paveikslesis.jpg" width="200" height="150" alt="Tekstas jei neužkraus" title="Tekstas onHover">``
+* ``<a href="puslapis.html">Nuoroda</a>`` (viduje gali būti kitos žymes, veiks ant jų paspaudus)
+* ``<ul> <li>Unordered</li><li>list</li><li>Nenumeruotas sąrašas</li> </ul>``
+* ``<ol> <li>Ordered</li><li>list</li><li>Numeruotas sąrašas</li> </ol>``
+* ``<br>`` line break
+
+
+<table border="1">
+    <tr>
+        <th rowspan="2">Table</th>
+        <th colspan="3">Header</th>
+    </tr>
+    <tr>
+        <th>table</th>
+        <th>header</th>
+        <th>th/th>
+    </tr>
+    <tr>
+        <td>table</td>
+        <td>data</td>
+        <td>td</td>
+        <td>td</td>
+    </tr>
+</table>
+
+```html
+<table border="1">
+    <tr>
+        <th rowspan="2">Table</th>
+        <th colspan="3">Header</th>
+    </tr>
+    <tr>
+        <th>table</th>
+        <th>header</th>
+        <th>th/th>
+    </tr>
+    <tr>
+        <td>table</td>
+        <td>data</td>
+        <td>td</td>
+        <td>td</td>
+    </tr>
+</table>
+```
+
+###special characters
+
+* ``&nbsp;`` non-breaking space
+* ``&lt;` less-than <
+* ``&gt;`` greater-than >
+* ``&amp;`` ampersand
+
