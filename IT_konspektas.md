@@ -474,7 +474,7 @@ pvz.:
 ###special characters
 
 * ``&nbsp;`` non-breaking space
-* ``&lt;` less-than <
+* ``&lt;`` less-than <
 * ``&gt;`` greater-than >
 * ``&amp;`` ampersand
 
