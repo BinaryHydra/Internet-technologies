@@ -471,10 +471,159 @@ pvz.:
 </table>
 ```
 
-###special characters
+<form name="forma" action="rezultatas.html" method="post">
+
+input tipai - ``button``, ``text``, ``password``, ``checkbox``, ``submit``, ``radio``, ``reset``  
+html5 input tipai - ``tel``, ``search``, ``url``, ``email``, ``datetime``, ``date``, ``month``, ``week``, ``time``, ``datetime-local``, ``number``, ``range``, ``color``  
+html5 input atributai - ``placeholder``, ``autofocus``, ``required``
+
+
+```html
+<select multiple size="4" name="manoMeniu">
+    <option selected value="r">Raudona</option>
+    <option selected value="g">Geltona</option>
+    <option value="z">Žalia</option>
+    <option value="m">Mėlyna</option>
+</option>
+```
+
+multiple - galima pažymėt kelis
+size - kiek eilučiu (jei daugiau - slankjuostė) (size=1 && !multiple <-> dropdown)
+
+```html
+<textarea name="tekstas" rows="5" cols="30">tekstas<textarea>
+```
+
+cols-eilutės ilgis
+
+### special characters
 
 * ``&nbsp;`` non-breaking space
 * ``&lt;`` less-than <
 * ``&gt;`` greater-than >
 * ``&amp;`` ampersand
 
+### semantiniai elementai
+
+* ``section`` -
+Elementas nurodantis tam tikrą dokumento dalį/skyrių. 
+Skirtas tematiniam turinio grupavimui.
+Dažniausiai turi antraštę.
+Tinklapis gali būti padalintas į kelias sekcijas: naujienos, kontaktai ir t.t.  
+* ``nav`` -
+Elementas nurodantis dokumento dalį, kuri turi nuorodas į kitus dokumentus ar to paties dokumento dalis.
+Visų dokumento nuorodų į nav dėti nereikia, tai turėtų būti tik pagrindiniai navigaciniai blokai. Pvz. puslapio apačioje esančiom nuorodoms pakanka footer elemento.
+* ``article`` - 
+Elementas talpinantis tam tikrą informaciją, kuri gali būti platinama nepriklausomai nuo kitos informacijos.
+Pvz: forumo pranešimas, blogo įrašas, vartotojo komentaras.
+* ``aside`` -
+Nurodo puslapio dalį, kuri susideda iš turinio, kuris nėra tiesiogiai susijęs su turiniu esančiu apie jį.
+Galima naudoti reklaminiam blokam, citatoms ir pan.
+* ``hgroup`` -
+Nurodo dokumento dalies antraštę.
+Naudojamas grupuoti h1-h6 elementus, kai antraštė yra kelių lygių.
+* ``header`` -
+Nurodo įžanginių ar navigacinių elementų grupę. Dažniausiai viduje turi h1-h6 arba hgroup elementus.
+* ``footer`` -
+Nurodo dokumento artimiausio protėvio sekcijos poraštę. Dažniausiai nurodoma informacija apie tą sekciją: kas ją parašė, autorių teisės, data ir pan.
+* ``time`` -
+Nurodo laiką 24 valandų formate arba tikslią datą. Papildomai gali būti nurodyta ir laiko zona.
+* ``mark`` -
+Nurodo teksto dalį pažymėtą ar paryškintą dokumente. Pvz.: paieškos rezultatuose raktažodį, pagal kurį ieškota.
+
+## CSS
+
+### Css ir html susiejimas
+
+```html
+    <style type="text/css">
+        h1, h2 {..css..}
+    </style>
+```
+
+```html
+<link rel="stylesheet" href="stilius.css" type="text/css">
+```
+
+```html
+    <style type="text/css">
+        @import url("css/stilius1.css"); <!-- atsiunčia visada -->
+        @import url("css/stilius2.css") print  <!-- atsiunčia tik jei spausdinama -->
+    </style>
+    <style type="text/css" media="print">  <!-- atsiunčia tik jei spausdinama -->
+        @import url("css/stilius3.css");
+        @import url("css/stilius4.css")
+    </style>
+```
+
+media tipai: ``screen``, ``print``, ``projector``, ``tv``, ``all``(default)
+
+### Media Queries Level 3
+
+```css
+@media screen and (max-width: 420 px) { ... }
+
+@media only screen and (orientation: portrait) { ... }
+```
+
+```html
+<link href="desktop.css" rel="stylesheet" 
+  media="screen and (min-device-width: 480px)">
+```
+
+### selectoriai
+
+* ``*`` - bet kuri žymė, gali būti praleistas
+* ``h1`` - žymė
+* ``h1 em`` - įpedinis
+* ``h1 > em`` - vaikas
+* ``[att]``, ``[att="val"]``, ``h[att]``  - atributo; ``[att~="val"]`` - vienas iš atribute esančių žodžių(atskirtų tarpais) yra "val"
+* ``.val``, ``h[class="val"]``, ``p.val`` - klasės; ``.val1.val2`` - tik jei turi abi klases
+* ``#a15``, ``[id="a15"]``, ``div#15`` - id selectorius
+* ``:link``(neaplankytom nurodom), ``:visited``(aplankytom nuorodom), ``a:active`` (spaudimo ant nuorodos momentu), ``:focus:hover`` (dabar redaguojamo lauko, užvedus pele) ``:first-line``, ``:first-letter`` -pseudo klasės
+
+grupuojama (or) kableliais ty. ``h1, h2, h3 { ..css }``
+
+### paveldejimas
+
+``color``, ``font-family``, ``font-size``, ``text-align``, ``visibility`` - paveldima
+``background-color``, ``background-image``, ``margin``, ``padding`` - nepaveldima
+
+``inherit`` paveldima tėvo (ne protėvio) reikšmė
+
+### Kaskadų mechanizmas
+
+1. naršyklės stiliai {mažiausias prioritetas}
+2. vartotojo stiliai
+3. autoriaus (tinklalapio) stiliai
+4. autoriaus (tinklalapio) svarbūs(``!important``) stiliai
+5. vartotojo svarbūs stiliai(``!important``) {didžiausias prioritetas}
+
+### specifiškumas
+a \*1000 + b\*100 + c\*100 + d.
+
+* a = jei CSS taisyklė paskelbta HTML žymės atribute style (o ne stilių lentelėje), tai a=1, priešingu atveju a=0. Jeigu a=1, tai visos kitos reikšmės (b, c, d) lygios 0
+* b = {ID selektorių skaičius}
+* c = {atributų/klasių selektorių ir pseudo-klasių skaičius}
+* d = {žymių selektorių ir pseudo-elementų skaičius}
+
+
+|* | a=0 | b=0 | c=0 | d=0|
+|---|---|---|---|---|---|
+|li| a=0 | b=0 | c=0 | d=1|
+|li:first-line| a=0 | b=0 | c=0 | d=2 |
+|ul li | a=0 | b=0 | c=0 | d=2 |
+|body ol > li |	a=0 |	b=0 |	c=0 |	d=3|
+|ol > [att=up] | a=0 | b=0 | c=1 |d=1|
+|div ol li.red | a=0 |b=0 | c=1 | d=3|
+|li#x34 | a=0 | b=1 | c=0 | d=1|
+|style="color:red"| a=1 | b=0 | c=0 | d=0|
+
+vienodo specifiškumo atveju imama paskutinė taisyklė
+
+visibility: hidden - paverčiama nematoma (bet vieta visvien užimamama)
+display: none - nerenderinama
+display: block - sukuriamas atskiras stačiakampis kuriame rodoma
+display: inline - vaizduojama einamojo bloko eilutėj
+
+##Javascript
