@@ -627,3 +627,119 @@ display: block - sukuriamas atskiras stačiakampis kuriame rodoma
 display: inline - vaizduojama einamojo bloko eilutėj
 
 ##Javascript
+
+Case sensitive, ty. null !== NULL
+Masyvai yra objektai
+Sveikas skaičius neskiriamas realus skaičius
+Masyvai gali turėt bet kokius objektus, galima praleisti
+Funkcijos argumentai saugomi arguments[]
+ParseInt parsina skaičiu nuo pradžios, galima nurodyt bazę
+
+### Konversija
+
+Sudėties operatorius, jei bent vienas operandas nėra skaičius, operandus verčia į string
+Kiti verčia operatoriai į skaičius
+
+### Kintamieji
+
+#### be ``var``
+
+```javascript
+x;
+y = x+1; // klaida
+```
+
+gali būti tik globalūs
+
+#### su ``var``
+
+```javascript
+    var x;
+    y = x+1; // NaN (arba undefined jei ne skaitinis kontekstas)
+```
+
+gali būti globalūs ir lokalūs
+
+``undefined`` ir ``null`` loginėse išraiškose virsta ``false``
+``null`` virsta nuliu skaitinėse išraiškose
+
+### Naudinga
+Datos validacija
+
+```javascript
+function checkDate(yearStr, monthStr, dayStr)
+    if (yearStr != parseInt(yearStr)) {
+        return false;
+    }
+    year = parseInt(yearStr);
+    month = parseInt(monthStr)-1; // Sausis - 0
+    day = parseInt(dayStr);
+    if (month < 0 || month > 11) {
+        ...
+    }
+    var date = new Date(year, month, day);
+    if (date.getDate() != day) {
+        return false;
+    }
+}
+```
+
+### Native js
+
+```javascript
+document.getElementById();
+document.getElementsByTagName()
+window.document.childNodes[0].childNodes[1].childNodes[4]
+```
+
+Jei turime pTag, galime eiti į:
+* sekantį brolį: ``pTag.nextSibling``
+* prieš tai einantį brolį: ``pTag.previousSibling``
+* tėvą: ``pTag.parentNode``
+* vaikus: ``pTag.childNodes``
+* atributus: ``pTag.attributes``
+* atributo vardas: ``pTag.attributes[0].nodeName`` (``alert(pTag.getAttribute("title"))``)
+* atributo reikšmė: ``pTag.attributes[0].nodeValue``
+* ieškoti žemiau medyje esančių mazgų pagal žymės vardą: ``pTag.getElementsByTagName("b")``
+
+```javascript
+pTag.setAttribute("class", "paragrafas");
+pTag.removeAttribute("class");
+pTag.firstChild.nodeValue = "Naujas tekstas";
+var newParagraph = document.createElement("p");
+var paragraphText = document.createTextNode("Naujas txt");
+newParagraph.appendChild(paragraphText);
+bodyTag.removeChild(newParagraph)
+newParagraph.onclick = function () {
+   this.parentNode.removeChild(this);
+};
+```
+
+### jQuery 
+
+jQuery() $()
+
+```javascript
+$(document).ready(function() {
+    // JavaScript kodas
+});
+```
+
+get ``$("h1").css("fontSize");``
+set ``$("h1").css("fontSize", "100px");`` ``$("h1").css({ fontSize: "100px", color: "red" });``
+
+``$("p").hide()``, ``show()``, ``hide("slow")``- manipuliuoja display;
+
+* pirmas elementas iš aibės ``$( "li" ).first()`` 
+* paskutinis elementas``last()``
+* broliai ``.siblings()``
+* tevas ``.parent()``
+* vaikai ``.children()``
+
+* .html() – Gauti arba keisti HTML turinį;
+* .text() – Gauti ar keisti tekstinį turinį.HTML bus pašalintas;
+* .attr() – Gauti ar keisti nurodyto atributo reikšmę;
+* .val() – Gauti ar nustatyti formos elemento reikšmę.
+* .appendTo - Pridėti reikšmę
+* .(_html_) - elemento sukurimas
+* .remove - pašalinimas
