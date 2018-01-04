@@ -2,8 +2,6 @@
 
 ## XML
 
-
-
 ### Žymių sąvokos
 
 ```xml
@@ -24,9 +22,6 @@
 * tik viena šakninė žymė
 * žymės padavinimas turi prasideti raide, _ arba :
 * žymės padavinime galima naudoti raides, skaičius, . , - , _ ir :
-
-
-
 
 
 ### Vardų sritys
@@ -56,11 +51,7 @@ Atributų unikalumas
 </x>
 ```
 
-
-
 ## XPath
-
-
 
 
 * ```/``` šakininis mazgas
@@ -92,16 +83,11 @@ Atributų unikalumas
 
 ![asys](asys+.png)
 
-
-
-
-
 ### Predikatai
 
 * skaičius [2] verčiamas į [position()=2]
 * mazgų aibė [./@pavadinimas] - verčiamas į boolean, t.y. ar ne tuščia
 * string - ["a"] verčiamas į boolean ar ne "".
-
 
 
 #### Žymių numeracija
@@ -111,7 +97,6 @@ Atributų unikalumas
 
 * //knyga[1] - gražina visas pirmas knygas
 * (//knyga)[1]  -gražina pirmą knygą
-
 
 
 ### Išraiškos
@@ -134,7 +119,6 @@ Atributų unikalumas
 * position() - mazgo pozicija
 * count() - s
 * sum() - verčia mazgus į string, tada į number ir tada sudeda
-
 
 #### string()
 
@@ -190,32 +174,21 @@ praleistas argumentas <-> self::node()
   * aibė ir string - aibės elementams ir string - *string()*, *dekarto sandauga* ir jei bent vienas tenkina true;
   * aibė ir boolean - aibė verčiama į *boolean()* (t.y. ar ne tuščia);
 
-
-
 #### naudinga
 
  border="1"><tr><td>
 
 @id unikalumas - ```//*[@id = following::*/@id or @id=descendant::*/@id]```
 
-
-
 mažiausios kainos knyga - ```//knyga[not(kaina > //knyga/kaina)]```
 
-
-
 ### XML schema
-
-
- ><tr><td>
 
 Žymės deklaracija -
  minOccurs, maxOccurs, default, fixed
 
 Atributu deklaracija -
  default, fixed, use[optional, prohibited, required]
-
-
 
 ```xml
 <all
@@ -235,8 +208,6 @@ Content: (annotation?, (element|choice|sequence)*)
 </choice>
 ```
 
-
-
 ```xml
 <sequence
 maxOccurs = (nonNegativeInteger | unbounded) : 1
@@ -244,7 +215,6 @@ minOccurs = nonNegativeInteger : 1>
 Content: (annotation?, (element|choice|sequence)*)
 </sequence>>
 ```
-
 
 #### Turinio tipai
 
@@ -254,9 +224,6 @@ Content: (annotation?, (element|choice|sequence)*)
 |Gali turėti vaikinių žymių|Taip|Taip|Ne|Ne|
 |Gali turėti tekstą|Taip|Ne|Taip|Ne|
 
-
-
-
 #### Simple type
 
 ``xs:string``
@@ -264,8 +231,6 @@ galima naudoti abribojimus: ``length``, ``minLength``, ``maxLength``, ``pattern`
 
 ``xs:date``, ``xs:integer``
 galima naudoti abribojimus: ``pattern``, ``enumeration``, ``minInclusive``, ``minExclusive``, ``maxInclusive``, ``maxExclusive``, ``totalDigits`` (sk. kiekis), ```fractionDigits``` (sk. po kablelio)
-
-
 
 Paprastas tipas išvedamas:
 
@@ -290,8 +255,6 @@ Tuščias turinys turi tik atributus.
 Apribojimo principas - ribojimas tipas turi atitikti ir tėvinių tipų taisykles.  
 Dviprasmiško turinio taisyklė - neturi būti kelių vienai prasidenančių žymių (sequence) choise struktūroj.
 Neprieštaringo deklaravimo taisyklė - negali būti vienodai pavadintų, bet skirtingų tipų žymių vienoj strukturoj.
-
-
 
 #### Unikalumas
 
@@ -336,8 +299,6 @@ su vardų sritim
 </užsakymas>
 ```
 
-
-
 #### elementFormDefault
 
 unqualified -  lokalioms žymėms negalioja globalus xmlns:, galioja pagal tėvinį type
@@ -360,9 +321,6 @@ qualified - lokalioms žymems galioja globalus xmlns.
 
 Abu galioja dokumentams, ne schemai.
 
-
-
-
 ## JSON
 
 ### Duomenų tipai:
@@ -379,8 +337,6 @@ Abu galioja dokumentams, ne schemai.
 tie patys tipai + ```integer```
 
 galima nurodyti kelis tipus ```"pavadinimas": { "type": ["number", "string"] }```
-
-
 
 ### String
 
@@ -408,9 +364,6 @@ galima nurodyti kelis tipus ```"pavadinimas": { "type": ["number", "string"] }``
 
 ### enum
 
-
-
-
 ### perpanaudojimas
 
 definitions ir ref
@@ -437,8 +390,6 @@ definitions ir ref
 }
 ```
 
-
-
 ### praplėtimas
 
 * allOf
@@ -463,11 +414,7 @@ definitions ir ref
 ``schema`` nurodo kad schema ir schemos versija (rekomentuojama)  
 ``id`` nurodo unikalų identifikatorių ir bazinį kelią kurio ieškos ``$ref`` (rekomenduoja url, su failu, ref ieškos tame pačiame katologe)
 
-
-
 ## HTML
-
-
 
 ```html
 <!DOCTYPE html>
@@ -487,8 +434,6 @@ definitions ir ref
 * head - metaduomenys, vartotojui nematomi
 * body - turinys, kuris atvaizduojamas 
 
-
-
 ### head
 
 ``title`` beveik visuomet privalomas (išskyrus iframe?)  
@@ -505,10 +450,7 @@ definitions ir ref
 * ``<ol> <li>Ordered</li><li>list</li><li>Numeruotas sąrašas</li> </ol>``
 * ``<br>`` line break
 
-
-
-
- border="1">
+<table border="1">
     <tr>
         <th rowspan="2">Table</th>
         <th colspan="3">Header</th>
@@ -525,8 +467,6 @@ definitions ir ref
         <td>td</td>
     </tr>
 </table>
-
-
 
 ```html
  border="1">
@@ -548,13 +488,11 @@ definitions ir ref
 </table>
 ```
 
-
  border="1"><tr><td>
 
 ```xml
 <form name="forma" action="rezultatas.html" method="post">
 ```
-
 input tipai - ``button``, ``text``, ``password``, ``checkbox``, ``submit``, ``radio``, ``reset``  
 html5 input tipai - ``tel``, ``search``, ``url``, ``email``, ``datetime``, ``date``, ``month``, ``week``, ``time``, ``datetime-local``, ``number``, ``range``, ``color``  
 html5 input atributai - ``placeholder``, ``autofocus``, ``required``
@@ -576,7 +514,6 @@ size - kiek eilučiu (jei daugiau - slankjuostė) (size=1 && !multiple <-> dropd
 ```
 
 cols-eilutės ilgis
-
 
 ### special characters
 
@@ -612,8 +549,6 @@ Nurodo dokumento artimiausio protėvio sekcijos poraštę. Dažniausiai nurodoma
 Nurodo laiką 24 valandų formate arba tikslią datą. Papildomai gali būti nurodyta ir laiko zona.
 * ``mark`` -
 Nurodo teksto dalį pažymėtą ar paryškintą dokumente. Pvz.: paieškos rezultatuose raktažodį, pagal kurį ieškota.
-
-
 
 ## CSS
 
