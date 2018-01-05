@@ -627,16 +627,16 @@ a \*1000 + b\*100 + c\*100 + d.
 * d = {žymių selektorių ir pseudo-elementų skaičius}
 
 
-|* | a=0 | b=0 | c=0 | d=0|
-|---|---|---|---|---|---|
-|li| a=0 | b=0 | c=0 | d=1|
-|li:first-line| a=0 | b=0 | c=0 | d=2 |
-|ul li | a=0 | b=0 | c=0 | d=2 |
-|body ol > li |	a=0 |	b=0 |	c=0 |	d=3|
-|ol > [att=up] | a=0 | b=0 | c=1 |d=1|
-|div ol li.red | a=0 |b=0 | c=1 | d=3|
-|li#x34 | a=0 | b=1 | c=0 | d=1|
-|style="color:red"| a=1 | b=0 | c=0 | d=0|
+| * | a=0 | b=0 | c=0 | d=0 |
+| --- | --- | --- | --- | --- | ---|
+| li | a=0 | b=0 | c=0 | d=1 |
+| li:first-line | a=0 | b=0 | c=0 | d=2 |
+| ul li | a=0 | b=0 | c=0 | d=2 |
+| body ol > li |	a=0 |	b=0 |	c=0 |	d=3 |
+| ol > [att=up] | a=0 | b=0 | c=1 |d=1 |
+| div ol li.red | a=0 |b=0 | c=1 | d=3 |
+| li#x34 | a=0 | b=1 | c=0 | d=1 |
+| style="color:red" | a=1 | b=0 | c=0 | d=0 |
 
 vienodo specifiškumo atveju imama paskutinė taisyklė
 
