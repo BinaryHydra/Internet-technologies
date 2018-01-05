@@ -744,7 +744,7 @@ $(document).ready(function() {
 });
 ```
 
-get ``$("h1").css("fontSize");``
+get ``$("h1").css("fontSize");``  
 set ``$("h1").css("fontSize", "100px");`` ``$("h1").css({ fontSize: "100px", color: "red" });``
 
 ``$("p").hide()``, ``show()``, ``hide("slow")``- manipuliuoja display;
