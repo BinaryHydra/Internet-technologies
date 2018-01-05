@@ -1,3 +1,9 @@
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 # IT konspektas
 
 ## XML
@@ -626,9 +632,8 @@ a \*1000 + b\*100 + c\*100 + d.
 * c = {atributų/klasių selektorių ir pseudo-klasių skaičius}
 * d = {žymių selektorių ir pseudo-elementų skaičius}
 
-
 | * | a=0 | b=0 | c=0 | d=0 |
-| --- | --- | --- | --- | --- | ---|
+| --- | --- | --- | --- | --- | --- |
 | li | a=0 | b=0 | c=0 | d=1 |
 | li:first-line | a=0 | b=0 | c=0 | d=2 |
 | ul li | a=0 | b=0 | c=0 | d=2 |
